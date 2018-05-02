@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import utility.ControllerInterface;
  
+
 @Slf4j
 @Controller
 @RequestMapping("/login") 
@@ -18,3 +19,4 @@ public class LoginController implements ControllerInterface {
 		return "login";
 	}
 }
+

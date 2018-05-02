@@ -10,8 +10,8 @@ import utility.ControllerInterface;
 @Controller
 public class HomeController implements ControllerInterface {
 
-  @GetMapping("/")
-  public String home() {
-    return "home";
-  }
+    @GetMapping("/")
+    public String home() {
+        return "home";
+    }
 }
