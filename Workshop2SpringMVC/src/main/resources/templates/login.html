@@ -1,5 +1,4 @@
-<!DOCTYPE html> <html
-        xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html> <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Login</title>
 		<link rel="stylesheet" th:href="@{/styles.css}" />
@@ -11,11 +10,12 @@
 			<div class="grid"> 
 			<h3>Username:</h3>
 			<input type="text" th:field="*{username}"/>
+			</div>
 			<br/>
+			<div class="grid"> 
 			<h3>Password:</h3>
 			<input type="text" th:field="*{password}"/>
 			<br/> 
- 
       		<button>Submit</button>
 			</div>
 		</form>
