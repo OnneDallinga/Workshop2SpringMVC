@@ -1,4 +1,4 @@
-package product;
+package domain.product;
 
 import lombok.Data;
 
@@ -15,7 +15,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    private Long id;
 
     @NotNull
     private String name;
