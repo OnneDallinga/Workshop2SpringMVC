@@ -1,5 +1,6 @@
-package domain.order;
+package domain.invoicing;
 
+import domain.order.Order;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 

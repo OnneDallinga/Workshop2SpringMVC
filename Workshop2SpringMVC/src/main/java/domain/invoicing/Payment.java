@@ -1,5 +1,6 @@
-package domain.order;
+package domain.invoicing;
 
+import domain.invoicing.Invoice;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
