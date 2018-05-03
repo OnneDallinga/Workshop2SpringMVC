@@ -1,6 +1,7 @@
 package wine.address;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import wine.customer.Customer;
 
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Positive;
 
 @Data
 @Entity
+@EqualsAndHashCode(of={"postalCode","houseNumber","customer"})
 public class Address {
 
     public enum AddressType {

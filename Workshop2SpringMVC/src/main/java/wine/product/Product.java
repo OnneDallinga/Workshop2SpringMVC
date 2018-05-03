@@ -1,6 +1,7 @@
 package wine.product;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 
 @Data
 @Entity
+@EqualsAndHashCode(of={"name","producedYear","country","grapeVariety","alcoholPercentage"})
 public class Product {
 
     @Id

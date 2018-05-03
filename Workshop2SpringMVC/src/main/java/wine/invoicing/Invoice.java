@@ -1,6 +1,7 @@
 package wine.invoicing;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import wine.order.Order;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,6 +15,7 @@ import java.util.Date;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude={"id"})
 public class Invoice {
 
     @Id

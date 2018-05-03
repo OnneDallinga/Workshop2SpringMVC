@@ -1,6 +1,7 @@
 package wine.order;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import wine.product.Product;
 
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Positive;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude={"id"})
 public class OrderLineItem {
 
     @Id

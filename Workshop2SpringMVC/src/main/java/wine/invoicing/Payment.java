@@ -2,6 +2,7 @@ package wine.invoicing;
 
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import wine.invoicing.Invoice;
 
@@ -16,6 +17,7 @@ import java.util.Date;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude={"id"})
 @NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
 public class Payment {
 

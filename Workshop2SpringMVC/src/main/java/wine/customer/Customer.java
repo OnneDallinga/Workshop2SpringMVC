@@ -1,6 +1,7 @@
 package wine.customer;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import wine.account.Account;
 
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude={"id","account"})
 public class Customer {
 
     @Id
