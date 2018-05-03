@@ -1,4 +1,4 @@
-package domain.product;
+package wine.product;
 
 public enum GrapeVariety {
 

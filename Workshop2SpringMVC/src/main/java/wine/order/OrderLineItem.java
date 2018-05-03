@@ -1,7 +1,7 @@
-package domain.order;
+package wine.order;
 
-import domain.product.Product;
 import lombok.Data;
+import wine.product.Product;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

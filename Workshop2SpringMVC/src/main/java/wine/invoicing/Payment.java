@@ -1,9 +1,10 @@
-package domain.invoicing;
+package wine.invoicing;
 
-import domain.invoicing.Invoice;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import wine.invoicing.Invoice;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;

@@ -1,7 +1,7 @@
-package domain.address;
+package wine.address;
 
-import domain.customer.Customer;
 import lombok.Data;
+import wine.customer.Customer;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

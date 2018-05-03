@@ -1,7 +1,8 @@
-package domain.invoicing;
+package wine.invoicing;
 
-import domain.order.Order;
 import lombok.Data;
+import wine.order.Order;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;

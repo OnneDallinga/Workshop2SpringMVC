@@ -1,4 +1,4 @@
-package account;
+package wine;
 
 import javax.validation.Valid;
 
@@ -9,13 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import utility.ControllerInterface;
+import lombok.extern.slf4j.Slf4j;
+import wine.account.Account;
+import wine.utility.ControllerInterface;
 
+@Slf4j
 @Controller
 @RequestMapping("/register")
 public class AccountCreationController implements ControllerInterface {
 	
-	@GetMapping("/register")
+	@GetMapping
 	public String showAccountEssentials(Model model) {
 		model.addAttribute("username");
 		model.addAttribute("password");
@@ -23,7 +26,7 @@ public class AccountCreationController implements ControllerInterface {
 		return "register";
 	}
 	
-	@PostMapping("/register")
+	@PostMapping
 	public String processNewAccount(@Valid Account account, Errors errors) {
 		if (errors.hasErrors()) {
 			return "account";

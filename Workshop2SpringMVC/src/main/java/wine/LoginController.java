@@ -1,4 +1,4 @@
-package WineMain;
+package wine;
 
 import javax.validation.Valid;
 
@@ -6,16 +6,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import account.Account;
 import lombok.extern.slf4j.Slf4j;
-import utility.ControllerInterface;
+import wine.account.Account;
+import wine.utility.ControllerInterface;
 
 @Slf4j
 @Controller
+@RequestMapping("/login")
 public class LoginController implements ControllerInterface {
 
-	@GetMapping("/login")
+	@GetMapping
 	public String login() {
 		return "login";
 	}
