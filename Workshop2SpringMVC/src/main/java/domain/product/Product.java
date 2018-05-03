@@ -37,7 +37,7 @@ public class Product {
              message="The country name has to be between 4 - 30 letters long.")
     private String country;
 
-    private String grapeVariety;
+    private GrapeVariety grapeVariety;
 
     @Pattern(regexp="^\\d{0,2}(?:\\.\\d)?$",
              message="Please follow the following format: \"7.2\", \"14.0\".")
