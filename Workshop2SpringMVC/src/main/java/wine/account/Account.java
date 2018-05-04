@@ -50,6 +50,9 @@ public class Account implements UserDetails {
 
     @SuppressWarnings("unused")
 	private String encryptedPassword;
+    
+    @SuppressWarnings("unused")
+	private boolean enabled;
 
     @Temporal(TemporalType.TIME)
     private Date createdAt;

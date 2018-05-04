@@ -6,3 +6,8 @@ create table if not exists account (
 	salt varchar(50),
 	date time
 );
+create table if not exists authorities (
+	id varchar(4) not null,
+	username varchar(25) not null,
+	authority varchar(10) not null
+);
