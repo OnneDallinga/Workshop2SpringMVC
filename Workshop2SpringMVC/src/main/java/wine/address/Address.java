@@ -26,8 +26,8 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private Customer customer;
+    /*@NotNull
+    private Customer customer;*/
 
     private String street;
 

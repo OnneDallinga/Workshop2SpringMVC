@@ -20,11 +20,11 @@ public class OrderLineItem {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    /*@NotNull
     private Order parentOrder;
 
     @NotNull
-    private Product product;
+    private Product product;*/
 
     @Positive
     private int productQuantity;

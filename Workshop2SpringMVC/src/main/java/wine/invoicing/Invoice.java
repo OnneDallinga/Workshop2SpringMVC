@@ -22,10 +22,10 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private Order order;
+    //@NotNull
+    //private Order order;
 
-    private Payment payment;
+    //private Payment payment;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date createdOnDateTime;

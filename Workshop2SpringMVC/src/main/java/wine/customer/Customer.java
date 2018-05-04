@@ -5,9 +5,12 @@ import lombok.EqualsAndHashCode;
 import wine.account.Account;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -18,10 +21,12 @@ import javax.validation.constraints.Pattern;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long customerId;
 
-    @NotNull
+	@PrimaryKeyJoinColumn 
+	@OneToOne(
+			fetch = FetchType.LAZY,
+			optional = false)
     private Account account;
 
     @Pattern(regexp="[a-zA-Z]",

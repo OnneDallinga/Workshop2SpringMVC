@@ -32,8 +32,8 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private Invoice invoice;
+    /*@NotNull
+    private Invoice invoice;*/
 
     private PaymentMethod paymentMethod;
 
