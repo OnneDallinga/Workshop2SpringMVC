@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -48,6 +50,7 @@ public class Account implements UserDetails {
 
     private String encryptedPassword;
 
+    @Temporal(TemporalType.TIME)
     private Date createdAt;
     
     @PrePersist
