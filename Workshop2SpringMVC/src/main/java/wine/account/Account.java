@@ -48,7 +48,8 @@ public class Account implements UserDetails {
             + " one number and one special character.")
     private String password;
 
-    private String encryptedPassword;
+    @SuppressWarnings("unused")
+	private String encryptedPassword;
 
     @Temporal(TemporalType.TIME)
     private Date createdAt;
