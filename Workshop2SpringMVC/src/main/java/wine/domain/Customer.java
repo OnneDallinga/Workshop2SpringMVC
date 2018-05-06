@@ -1,9 +1,9 @@
-package wine.domain.customer;
+package wine.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import wine.utility.BaseEntity;
-import wine.domain.account.Account;
+import wine.domain.Account;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

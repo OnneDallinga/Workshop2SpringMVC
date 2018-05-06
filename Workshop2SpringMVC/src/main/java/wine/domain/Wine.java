@@ -1,4 +1,4 @@
-package wine.domain.product;
+package wine.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,7 +13,7 @@ public class Wine extends Product {
 
     /** The country and grape variety properties bear no annotations/validation due to having
      *  restricted inputs in the web application via e.g. dropdown selection. This aids with
-     *  data integrity and controlling valid user input. */
+     *  repositories integrity and controlling valid user input. */
 
     public enum WineClassification {
         RED,

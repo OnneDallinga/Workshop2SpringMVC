@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
-import wine.domain.account.Account;
+import wine.domain.Account;
 
 @Slf4j
 @Controller

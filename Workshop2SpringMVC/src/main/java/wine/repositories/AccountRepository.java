@@ -1,7 +1,7 @@
-package wine.data;
+package wine.repositories;
 import org.springframework.data.repository.CrudRepository;
 
-import wine.domain.account.Account;
+import wine.domain.Account;
 
 public interface AccountRepository extends CrudRepository<Account, Long> {
 

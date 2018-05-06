@@ -1,6 +1,6 @@
-package wine.data;
+package wine.repositories;
 
-import wine.domain.product.Wine;
+import wine.domain.Wine;
 
 import java.util.Set;
 

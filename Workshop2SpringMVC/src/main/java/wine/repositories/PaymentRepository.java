@@ -1,4 +1,4 @@
-package wine.data;
+package wine.repositories;
 
 public interface PaymentRepository {
 }

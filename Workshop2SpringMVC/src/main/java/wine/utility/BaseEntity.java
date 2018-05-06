@@ -1,4 +1,4 @@
-package wine.domain;
+package wine.utility;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;

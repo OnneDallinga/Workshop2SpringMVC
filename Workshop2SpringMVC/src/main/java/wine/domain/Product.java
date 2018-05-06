@@ -1,4 +1,4 @@
-package wine.domain.product;
+package wine.domain;
 
 import lombok.Data;
 import wine.utility.BaseEntity;

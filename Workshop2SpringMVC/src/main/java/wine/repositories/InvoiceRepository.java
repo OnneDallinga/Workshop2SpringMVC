@@ -1,8 +1,8 @@
-package wine.data;
+package wine.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import wine.domain.invoicing.Invoice;
-import wine.domain.order.Order;
+import wine.domain.Invoice;
+import wine.domain.Order;
 
 public interface InvoiceRepository extends CrudRepository<Invoice, Long> {
 

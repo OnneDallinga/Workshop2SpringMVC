@@ -1,8 +1,7 @@
-package wine.data;
+package wine.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import wine.domain.account.Account;
-import wine.domain.customer.Customer;
+import wine.domain.Customer;
 
 import java.util.Set;
 

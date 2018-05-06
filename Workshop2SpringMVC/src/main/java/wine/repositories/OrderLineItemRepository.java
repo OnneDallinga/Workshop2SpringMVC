@@ -1,7 +1,7 @@
-package wine.data;
+package wine.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import wine.domain.order.OrderLineItem;
+import wine.domain.OrderLineItem;
 
 public interface OrderLineItemRepository extends CrudRepository<OrderLineItem, Long> {
 }

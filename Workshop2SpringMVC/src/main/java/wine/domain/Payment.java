@@ -1,4 +1,4 @@
-package wine.domain.invoicing;
+package wine.domain;
 
 import lombok.AccessLevel;
 import lombok.Data;

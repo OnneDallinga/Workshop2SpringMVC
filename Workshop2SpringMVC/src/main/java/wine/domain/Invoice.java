@@ -1,4 +1,4 @@
-package wine.domain.invoicing;
+package wine.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

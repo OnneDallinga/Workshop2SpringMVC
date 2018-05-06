@@ -1,4 +1,4 @@
-package wine.domain.address;
+package wine.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
