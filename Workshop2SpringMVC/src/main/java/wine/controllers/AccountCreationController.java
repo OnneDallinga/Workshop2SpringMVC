@@ -1,4 +1,4 @@
-package wine;
+package wine.controllers;
 
 import javax.validation.Valid;
 
@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
-import wine.account.Account;
-import wine.utility.ControllerInterface;
+import wine.domain.account.Account;
 
 @Slf4j
 @Controller

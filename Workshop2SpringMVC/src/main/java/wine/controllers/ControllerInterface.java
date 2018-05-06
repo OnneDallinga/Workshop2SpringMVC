@@ -1,4 +1,4 @@
-package wine.utility;
+package wine.controllers;
 
 public interface ControllerInterface { //parent class
 
