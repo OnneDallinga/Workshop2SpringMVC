@@ -2,6 +2,7 @@ package wine.domain.order;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import wine.domain.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,18 +12,20 @@ import javax.validation.constraints.Positive;
 
 @Data
 @Entity
-@EqualsAndHashCode(exclude={"id"})
-public class OrderLineItem {
-
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+@EqualsAndHashCode(callSuper=false)
+public class OrderLineItem extends BaseEntity<Long> {
 
     /*@NotNull
-    private Order parentOrder;
+    @ManyToOne(optional = false)
+	@JoinColumn(name = "orderID",
+				referencedColumnName = "id")
+	private Order parentOrder;
 
     @NotNull
-    private Product product;*/
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "productID",
+				referencedColumnName = "id")
+	private Product product;*/
 
     @Positive
     private int productQuantity;

@@ -2,6 +2,7 @@ package wine.domain.order;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import wine.domain.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,17 +13,19 @@ import java.util.Date;
 
 @Data
 @Entity
-@EqualsAndHashCode(exclude={"id","itemsInOrder"})
-public class Order {
+@EqualsAndHashCode(callSuper=false, exclude={"itemsInOrder"})
+public class Order extends BaseEntity<Long> {
 
-    @Id
-    private Long id;
-
-    @NotNull
-    private int customerId;
+    /* @NotNull
+    @ManyToOne(optional = false)
+    private Customer customer; */
 
     /*@NotNull
-    @OneToMany
+    @OneToMany(mappedBy = "parentOrder",
+			   fetch = FetchType.EAGER,
+			   cascade = CascadeType.ALL,
+			   orphanRemoval = true)
+	@Fetch(value = FetchMode.SUBSELECT)
     private List<OrderLineItem> itemsInOrder;*/
 
     private BigDecimal orderPriceTotal;
@@ -30,10 +33,4 @@ public class Order {
     private boolean shipped;
     private boolean completed;
 
-    private Date createdAt;
-    
-    @PrePersist
-    private void createdAt() {
-    	this.createdAt = new Date();
-    }
 }

@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import wine.domain.BaseEntity;
 import wine.domain.invoicing.Invoice;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,7 +19,7 @@ import java.util.Date;
 @Entity
 @EqualsAndHashCode(exclude={"id"})
 @NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
-public class Payment {
+public class Payment extends BaseEntity<Long> {
 
     enum PaymentMethod {
         IDEAL,
@@ -27,12 +28,10 @@ public class Payment {
         CREDITCARD
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     /*@NotNull
-    //@ManyToOne
+    @OneToOne
+    @JoinColumn(name = "invoiceID",
+				referencedColumnName = "id")
     private Invoice invoice;*/
 
     private PaymentMethod paymentMethod;

@@ -2,26 +2,21 @@ package wine.domain.customer;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import wine.domain.BaseEntity;
 import wine.domain.account.Account;
+import wine.domain.address.Address;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude={"id","account"})
-public class Customer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+@EqualsAndHashCode(callSuper=false, exclude={"account"})
+public class Customer extends BaseEntity<Long> {
 
 	@PrimaryKeyJoinColumn 
 	@OneToOne(
@@ -47,5 +42,12 @@ public class Customer {
     @Pattern(regexp="[0-9]{10}",
              message="Entry needs to be exactly 10 numbers (e.g. 0611223344). No spaces, dashes etc.")
     private String phoneNumber;
+
+    /* @OneToMany(mappedBy = "customer",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @Column(nullable = false)
+    private List<Address> addressesOfCustomer; */
 
 }

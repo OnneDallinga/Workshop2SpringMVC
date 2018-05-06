@@ -2,36 +2,32 @@ package wine.domain.invoicing;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import wine.domain.BaseEntity;
 import wine.domain.order.Order;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @Entity
-@EqualsAndHashCode(exclude={"id"})
-public class Invoice {
+@EqualsAndHashCode(callSuper=false)
+public class Invoice extends BaseEntity<Long> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    /*@NotNull
+    @OneToOne
+    @JoinColumn(name = "orderID",
+				referencedColumnName = "id")
+    private Order order;
 
-    //@NotNull
-    //@OneToOne
-    //private Order order;
-
-    //@OneToOne
-    //private Payment payment;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    private Date createdOn;
+    @OneToOne
+    @JoinColumn(name = "paymentID",
+				referencedColumnName = "id")
+    private Payment payment; */
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date settledOn;
 
 }

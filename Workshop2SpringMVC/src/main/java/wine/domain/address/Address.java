@@ -2,30 +2,26 @@ package wine.domain.address;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import wine.domain.BaseEntity;
 import wine.domain.customer.Customer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
 @Data
 @Entity
-@EqualsAndHashCode(of={"postalCode","houseNumber","customer"})
-public class Address {
+@EqualsAndHashCode(callSuper=false, of={"postalCode","houseNumber","customer"})
+public class Address extends BaseEntity<Long> {
 
     public enum AddressType {
         BILLING,
         DELIVERY
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    /*@NotNull
+    /*@ManyToOne(optional = false)
+	@JoinColumn(name = "id",
+				nullable = false)
     private Customer customer;*/
 
     private String street;
@@ -41,6 +37,8 @@ public class Address {
 
     private String city;
 
+    @Enumerated(EnumType.STRING)
+    @Column(length = 8)
     public AddressType addressType;
 
 }
