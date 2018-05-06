@@ -1,6 +1,7 @@
 package wine.domain.product;
 
 import lombok.Data;
+import wine.domain.BaseEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,11 +13,7 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+public abstract class Product extends BaseEntity<Long> {
 
     @NotNull
     String name;
