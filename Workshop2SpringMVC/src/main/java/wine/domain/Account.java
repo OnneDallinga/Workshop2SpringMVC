@@ -19,7 +19,7 @@ import wine.utility.BaseEntity;
 @Entity
 @EqualsAndHashCode(callSuper = false, of = {"username"})
 @RequiredArgsConstructor
-//@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+//@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true) > volgens geeft dit een comp error omdat er een final field is (serialVersionUID)
 public class Account extends BaseEntity<Long> implements UserDetails {
 
     @NotNull
