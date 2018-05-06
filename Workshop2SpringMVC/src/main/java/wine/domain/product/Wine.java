@@ -15,7 +15,7 @@ public class Wine extends Product {
      *  restricted inputs in the web application via e.g. dropdown selection. This aids with
      *  data integrity and controlling valid user input. */
 
-    enum WineClassification {
+    public enum WineClassification {
         RED,
         WHITE,
         ROSE,
