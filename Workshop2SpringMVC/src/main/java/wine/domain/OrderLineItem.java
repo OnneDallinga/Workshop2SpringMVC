@@ -21,8 +21,8 @@ public class OrderLineItem extends BaseEntity<Long> {
     @NotNull
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "productID",
-				referencedColumnName = "id")
-	private Product product;*/
+				referencedColumnName = "id") */
+	private Product product;
 
     @Positive
     private int productQuantity;
