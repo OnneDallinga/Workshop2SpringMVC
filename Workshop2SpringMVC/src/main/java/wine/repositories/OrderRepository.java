@@ -10,8 +10,10 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
 
     List<Order> findAllOrdersOfCustomer(Customer customer);
 
-    List<Order>findAllPendingOrders();
+    List<Order> findShippedOrdersOnly();
 
-    List<Order>findAllCompletedOrders();
+    List<Order> findShipmentPendingOrdersOnly();
+
+    List<Order> findAllCompletedOrders();
 
 }
