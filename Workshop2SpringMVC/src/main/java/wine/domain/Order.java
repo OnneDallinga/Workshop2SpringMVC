@@ -2,18 +2,14 @@ package wine.domain.order;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import wine.domain.BaseEntity;
+import wine.utility.BaseEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Date;
 
 @Data
 @Entity
-@EqualsAndHashCode(callSuper=false, exclude={"itemsInOrder"})
+@EqualsAndHashCode(callSuper=true)
 public class Order extends BaseEntity<Long> {
 
     /* @NotNull

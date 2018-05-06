@@ -2,16 +2,12 @@ package wine.domain.customer;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import wine.domain.BaseEntity;
+import wine.utility.BaseEntity;
 import wine.domain.account.Account;
-import wine.domain.address.Address;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
-import java.util.List;
 
 @Entity
 @Data

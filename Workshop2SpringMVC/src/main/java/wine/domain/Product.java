@@ -1,7 +1,7 @@
 package wine.domain.product;
 
 import lombok.Data;
-import wine.domain.BaseEntity;
+import wine.utility.BaseEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -19,6 +19,7 @@ public abstract class Product extends BaseEntity<Long> {
     String name;
 
     @NotNull
+    @Lob
     String description;
 
     @Positive
@@ -28,5 +29,8 @@ public abstract class Product extends BaseEntity<Long> {
 
     @PositiveOrZero
     int stockQuantity;
+
+    @Lob
+    Byte[] image;
 
 }

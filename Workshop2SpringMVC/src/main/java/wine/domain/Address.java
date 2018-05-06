@@ -2,8 +2,7 @@ package wine.domain.address;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import wine.domain.BaseEntity;
-import wine.domain.customer.Customer;
+import wine.utility.BaseEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;

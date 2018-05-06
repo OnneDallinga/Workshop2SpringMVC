@@ -2,8 +2,7 @@ package wine.domain.invoicing;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import wine.domain.BaseEntity;
-import wine.domain.order.Order;
+import wine.utility.BaseEntity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

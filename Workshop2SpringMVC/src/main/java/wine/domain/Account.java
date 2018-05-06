@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -14,10 +13,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import wine.domain.BaseEntity;
+import wine.utility.BaseEntity;
 
 @Entity
 @EqualsAndHashCode(callSuper = false, of = {"username"})

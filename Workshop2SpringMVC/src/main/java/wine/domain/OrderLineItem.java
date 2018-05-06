@@ -2,12 +2,9 @@ package wine.domain.order;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import wine.domain.BaseEntity;
+import wine.utility.BaseEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.Positive;
 
 @Data
