@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    .jdbcAuthentication()
 	      .dataSource(dataSource)
 	      .usersByUsernameQuery(
-	          "select username, encryptedpassword, enabled from account " +
+	          "select username, encrypted_password, enabled from account " +
 	          "where username=?")
 	      .authoritiesByUsernameQuery(
 	          "select username, authority from authorities " +
