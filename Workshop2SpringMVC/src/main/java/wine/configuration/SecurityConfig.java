@@ -1,4 +1,4 @@
-package wine.security;
+package wine.configuration;
 
 import javax.sql.DataSource;
 
