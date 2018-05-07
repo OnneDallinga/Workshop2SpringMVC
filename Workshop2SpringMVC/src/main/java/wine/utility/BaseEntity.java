@@ -24,21 +24,21 @@ public abstract class BaseEntity<ID> implements Serializable {
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_on", nullable = false)
-    private Date createdAt;
+    private Date createdOn;
 
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "modified_on")
-    private Date lastModifiedAt;
+    @Column(name = "last_modified_on")
+    private Date lastModifiedOn;
 
     @PrePersist
     public void setCreationDate() {
-        this.createdAt = new Date();
+        this.createdOn = new Date();
     }
 
     @PreUpdate
     public void setModificationDate() {
-        this.lastModifiedAt = new Date();
+        this.lastModifiedOn = new Date();
     }
 
 }

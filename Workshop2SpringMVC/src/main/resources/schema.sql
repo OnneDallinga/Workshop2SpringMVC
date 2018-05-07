@@ -4,7 +4,7 @@ create table if not exists account (
 	encryptedpassword varchar(50) not null,
 	enabled bit DEFAULT 1,
 	salt varchar(50),
-	createdon time
+	created_on timestamp not null
 );
 create table if not exists authorities (
 	id bigint not null unique,
