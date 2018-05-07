@@ -2,6 +2,7 @@ package wine.domain;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
