@@ -7,7 +7,7 @@ create table if not exists account (
 	date time
 );
 create table if not exists authorities (
-	id varchar(4) not null,
+	id bigint not null,
 	username varchar(25) not null,
 	authority varchar(10) not null
 );

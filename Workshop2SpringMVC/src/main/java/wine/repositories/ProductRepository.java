@@ -9,8 +9,8 @@ import java.util.Set;
 
 public interface ProductRepository extends CrudRepository<Wine, Long> {
 
-    Optional<Product> findByName(String name);
+    //Optional<Product> findByName(String name);
 
-    Set<Product> findAllOutOfStock();
+    //Set<Product> findAllOutOfStock();
 
 }

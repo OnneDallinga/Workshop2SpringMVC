@@ -9,8 +9,8 @@ import java.util.Set;
 
 public interface AddressRepository extends CrudRepository<Address, Long> {
 
-    Set<Address> findAddressesByCustomer(Customer customer);
+    //Set<Address> findAddressesByCustomer(Customer customer);
 
-    Optional<Address> findByPostalCode(String postalCode);
+    //Optional<Address> findByPostalCode(String postalCode);
 
 }

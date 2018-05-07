@@ -8,10 +8,10 @@ import java.util.Set;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
-    Set<Customer> findAllByLastName(String lastName);
+    //Set<Customer> findAllByLastName(String lastName);
 
-    Optional<Customer> findByEmail(String email);
+    //Optional<Customer> findByEmail(String email);
 
-    Optional<Customer> findByPhoneNumber(String phoneNumber);
+    //Optional<Customer> findByPhoneNumber(String phoneNumber);
 
 }
