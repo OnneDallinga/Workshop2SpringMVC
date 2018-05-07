@@ -22,7 +22,9 @@ import wine.utility.BaseEntity;
 //@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true) > volgens geeft dit een comp error omdat er een final field is (serialVersionUID)
 public class Account extends BaseEntity<Long> implements UserDetails {
 
-    @NotNull
+	private static final long serialVersionUID = 1L;
+
+	@NotNull
     @Size(min = 5, message = "Your username must be at least 5 characters long")
     @Pattern(regexp = "[A-Za-z0-9_]+", message = "Your username must be at least 5 characters long and"
             + "consist only of letters or numbers")
@@ -32,7 +34,6 @@ public class Account extends BaseEntity<Long> implements UserDetails {
     @Size(min = 8, message = "Your password must be at least 8 characters long.")
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$", message = "Your password must contain at least one uppercase letter, one lowercase letter,"
             + " one number and one special character.")
-    private String password;
 
     @SuppressWarnings("unused")
 	private String encryptedPassword;
@@ -40,7 +41,15 @@ public class Account extends BaseEntity<Long> implements UserDetails {
     @SuppressWarnings("unused")
 	private boolean enabled;
 
-    public String getUsername() {
+    public Account(String username, String password) {
+		this.username = username;
+		this.encryptedPassword = password;
+	}
+
+	public Account() {
+	}
+
+	public String getUsername() {
         return username;
     }
 
@@ -51,11 +60,6 @@ public class Account extends BaseEntity<Long> implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
     }
 
     @Override
@@ -77,5 +81,10 @@ public class Account extends BaseEntity<Long> implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+	@Override
+	public String getPassword() {
+		return null;
+	}
 
 }
