@@ -45,6 +45,8 @@ public class Account extends BaseEntity<Long> implements UserDetails {
     public Account(String username, String password) {
 		this.username = username;
 		this.encryptedPassword = password;
+		this.createdOn = new Date();
+		this.lastModifiedOn = new Date();
 	}
 
 	public Account() {

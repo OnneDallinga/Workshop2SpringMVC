@@ -24,12 +24,12 @@ public abstract class BaseEntity<ID> implements Serializable {
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_on", nullable = false)
-    private Date createdOn;
+    protected Date createdOn;
 
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_modified_on")
-    private Date lastModifiedOn;
+    protected Date lastModifiedOn;
 
     @PrePersist
     public void setCreationDate() {
