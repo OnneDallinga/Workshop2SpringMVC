@@ -1,5 +1,6 @@
 package wine.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import wine.domain.Product;
 import wine.repositories.ProductRepository;
@@ -7,6 +8,7 @@ import wine.repositories.ProductRepository;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @Service
 public class ProductServiceImpl implements ProductService {
 

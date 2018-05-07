@@ -9,6 +9,7 @@ import wine.utility.BaseEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -24,12 +25,12 @@ public class Payment extends BaseEntity<Long> {
         CREDITCARD
     }
 
-    /*@NotNull
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "invoiceID",
 				referencedColumnName = "id")
     private Invoice invoice;*/
 
+    @NotNull
     private PaymentMethod paymentMethod;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")

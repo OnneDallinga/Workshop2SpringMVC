@@ -15,8 +15,14 @@ import java.util.ListIterator;
 public class Order extends BaseEntity<Long> {
 
     /* @NotNull
-    @ManyToOne(optional = false)
-    private Customer customer; */
+    @ManyToOne(optional = false) */
+    private Customer customer;
+
+    /* @NotNull
+    @OneToOne
+    @JoinColumn(name = "invoiceID",
+				referencedColumnName = "id")*/
+    private Invoice invoice;
 
     /*@NotNull
     @OneToMany(mappedBy = "parentOrder",

@@ -18,6 +18,6 @@ public class ProductController implements ControllerInterface {
     public String getProductPage(Model model) {
         model.addAttribute("products", productService.getAllProducts());
 
-        return "recipes";
+        return "products";
     }
 }

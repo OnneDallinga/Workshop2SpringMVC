@@ -46,4 +46,10 @@ public class Customer extends BaseEntity<Long> {
     @Column(nullable = false)
     private List<Address> addressesOfCustomer; */
 
+    /* @OneToMany(mappedBy = "customer",
+                  fetch = FetchType.LAZY)
+     @Fetch(value = FetchMode.SUBSELECT)
+     @Column(nullable = false)
+     private List<Order> ordersOfCustomer; */
+
 }
