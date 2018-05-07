@@ -6,6 +6,6 @@ import wine.domain.Order;
 
 public interface InvoiceRepository extends CrudRepository<Invoice, Long> {
 
-    Invoice findByOrder(Order order);
+    //Invoice findByOrder(Order order);
     
 }

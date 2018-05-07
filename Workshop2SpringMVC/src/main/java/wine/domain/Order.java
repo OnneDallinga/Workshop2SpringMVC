@@ -30,23 +30,23 @@ public class Order extends BaseEntity<Long> {
 			   cascade = CascadeType.ALL,
 			   orphanRemoval = true)
 	@Fetch(value = FetchMode.SUBSELECT) */
-    private List<OrderLineItem> itemsInOrder;
+    //private List<OrderLineItem> itemsInOrder;
 
     private BigDecimal orderPriceTotal;
     private int orderItemsTotal;
     private boolean shipped;
     private boolean completed;
 
-    public void setOrderItems(List<OrderLineItem> lineItems) {
+    /*public void setOrderItems(List<OrderLineItem> lineItems) {
         if(itemsInOrder == null) {
             this.itemsInOrder = lineItems;
         } else {
             this.itemsInOrder.retainAll(lineItems);
             this.itemsInOrder.addAll(lineItems);
         }
-    }
+    }*/
 
-    public void setOrderPriceTotal(List<OrderLineItem> lineItems) {
+    /*public void setOrderPriceTotal(List<OrderLineItem> lineItems) {
         BigDecimal orderPriceTotal = BigDecimal.ZERO;
         ListIterator<OrderLineItem> it = lineItems.listIterator();
         while(it.hasNext()) {
@@ -56,9 +56,9 @@ public class Order extends BaseEntity<Long> {
             orderPriceTotal = orderPriceTotal.add(itemPrice.multiply(new BigDecimal(itemQuantity)));
         }
         this.orderPriceTotal = orderPriceTotal;
-    }
+    }*/
 
-    public void setOrderItemsTotal(List<OrderLineItem> lineItems) {
+    /*public void setOrderItemsTotal(List<OrderLineItem> lineItems) {
         ListIterator<OrderLineItem> it = lineItems.listIterator();
         int totalOfLineItemQuantities = 0;
         while(it.hasNext()) {
@@ -67,6 +67,6 @@ public class Order extends BaseEntity<Long> {
             totalOfLineItemQuantities += itemQuantity;
         }
         this.orderItemsTotal = totalOfLineItemQuantities;
-    }
+    }*/
 
 }
