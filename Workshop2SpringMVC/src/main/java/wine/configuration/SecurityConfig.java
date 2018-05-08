@@ -27,15 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}
-
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
 	    throws Exception {
-
-	  auth
-	  .userDetailsService(userDetailsService)
-	  .passwordEncoder(encoder());
-	  
+  
 	  auth
 	    .jdbcAuthentication()
 	      .dataSource(dataSource)
