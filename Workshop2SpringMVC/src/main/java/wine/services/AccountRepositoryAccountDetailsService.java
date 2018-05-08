@@ -1,35 +1,37 @@
 package wine.services;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.
-                                              UserDetailsService;
+        UserDetailsService;
 import org.springframework.security.core.userdetails.
-                                       UsernameNotFoundException;
+        UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
 import wine.domain.Account;
 import wine.repositories.AccountRepository;
 
 @Service
+@Primary // necessary to have SecurityConfig look here instead of Spring-given inMemoryUserDetails
 public class AccountRepositoryAccountDetailsService
         implements UserDetailsService {
 
-  private AccountRepository accountRepo;
+    @Autowired
+    private AccountRepository accountRepo;
 
-  @Autowired
-  public AccountRepositoryAccountDetailsService(AccountRepository accountRepo) {
-    this.accountRepo = accountRepo;
-  }
+    @Override
+    @Transactional(readOnly = true) // making sure transaction is of read-only type
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+        Account account = accountRepo.findByUsername(username);
 
-  @Override
-  public UserDetails loadUserByUsername(String username)
-      throws UsernameNotFoundException {
-    Account account = accountRepo.findByUsername(username);
-    if (account != null) {
-      return account;
+        if (account != null) {
+            return account;
+        }
+
+        throw new UsernameNotFoundException(
+                "User '" + username + "' not found");
     }
-    throw new UsernameNotFoundException(
-                    "User '" + username + "' not found");
-  }
-
 }
