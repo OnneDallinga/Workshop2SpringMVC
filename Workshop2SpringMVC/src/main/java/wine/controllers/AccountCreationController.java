@@ -1,5 +1,6 @@
 package wine.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +16,10 @@ import wine.repositories.AccountRepository;
 @RequestMapping("/register")
 public class AccountCreationController implements ControllerInterface {
 
+	@Autowired
 	private AccountRepository accountRepo;
+	@Autowired
 	private PasswordEncoder passwordEncoder;
-
-	public AccountCreationController(AccountRepository accountRepo, PasswordEncoder passwordEncoder) {
-		this.accountRepo = accountRepo;
-		this.passwordEncoder = passwordEncoder;
-	}
 
 	@GetMapping
 	public String registerForm() {
