@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- No content in the template html; each webpage has its own responsibility -->
+    <!-- Stylesheet stuff goes here -->
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
 </head>
 <body>
     <div th:fragment="footer" th:align="center">
@@ -15,5 +17,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Any javascript fancypants-ness goes here -->
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+
 </body>
 </html>
