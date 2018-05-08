@@ -10,6 +10,7 @@ public class RegistrationForm {
   private String password;
 
   public Account toAccount(PasswordEncoder passwordEncoder) {
+
     return new Account(
         username, passwordEncoder.encode(password));
   }

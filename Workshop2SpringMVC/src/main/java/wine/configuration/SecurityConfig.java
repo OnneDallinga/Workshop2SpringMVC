@@ -41,8 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	      .authoritiesByUsernameQuery(
 	          "select username, authority from authorities " +
 	          "where username=?")
-	      .passwordEncoder(new BCryptPasswordEncoder()); // the encryption
-
+	      .passwordEncoder(new BCryptPasswordEncoder());; // the encryption
 	}
 	
 	@Override
