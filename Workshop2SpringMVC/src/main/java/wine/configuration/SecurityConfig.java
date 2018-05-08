@@ -48,14 +48,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 	  http
 	    .authorizeRequests()
-	      .antMatchers("/mainmenu") // choose 1 or more pages
+	      .antMatchers("/home") // choose 1 or more pages
 	        .access("hasRole('ROLE_USER')") // choose the access level for those pages
 	      .antMatchers("/**").access("permitAll") // choose the access level for all other pages
 	      
 	      .and()
 	      .formLogin()
 	        .loginPage("/login") // defines login page
-	        .defaultSuccessUrl("/mainmenu", true) // defines where user is forced to go after logging in (true)
+			  .loginProcessingUrl("/authenticate")
+			  .failureForwardUrl("/authenticate?error")
+	        .defaultSuccessUrl("/home", true) // defines where user is forced to go after logging in (true)
 	      .and()
 	        .logout()
 	          .logoutSuccessUrl("/") // logout page
