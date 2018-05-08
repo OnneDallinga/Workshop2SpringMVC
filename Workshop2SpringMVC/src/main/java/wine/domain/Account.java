@@ -39,6 +39,8 @@ public class Account extends BaseEntity<Long> implements UserDetails {
     @SuppressWarnings("unused")
 	private String encryptedPassword;
     
+    private String password;
+    
     @SuppressWarnings("unused")
 	private boolean enabled;
 
@@ -87,7 +89,11 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return null;
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

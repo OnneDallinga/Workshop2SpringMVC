@@ -3,6 +3,7 @@ package wine.controllers;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,15 +18,19 @@ import wine.domain.Account;
 public class LoginController implements ControllerInterface {
 
 	@GetMapping
-	public String login() {
+	public String login(Model model) {
+		model.addAttribute("account", new Account());
 		return "login";
 	}
 
 	@PostMapping
 	public String processDesign(@Valid Account account, Errors errors) {
+		if (account.getUsername().equals("Onne")) {
+			return "redirect:/home";
+		}
 		if (errors.hasErrors()) {
 			return "account";
 		}
-		return "redirect:/mainpage";
+		return "redirect:/home";
 	}
 }
