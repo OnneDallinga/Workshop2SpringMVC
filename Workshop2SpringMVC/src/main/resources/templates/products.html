@@ -36,6 +36,8 @@
                         <td th:text="${product.name}">Honhonhon</td>
                         <td th:text="${product.price}">40</td>
                         <td th:text="${product.stockQuantity}">123</td>
+                        <td><a href="#" th:href="@{'products/show/' + ${product.id}}"
+                             th:text="${product.id}">View</a></td>
                     </tr>
                 </tbody>
             </table>
