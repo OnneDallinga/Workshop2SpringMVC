@@ -2,12 +2,15 @@ package wine.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import wine.utility.BaseEntity;
 import wine.domain.Account;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Entity
 @Data
@@ -39,17 +42,17 @@ public class Customer extends BaseEntity<Long> {
              message="Entry needs to be exactly 10 numbers (e.g. 0611223344). No spaces, dashes etc.")
     private String phoneNumber;
 
-    /* @OneToMany(mappedBy = "customer",
+    @OneToMany(mappedBy = "customer",
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
     @Column(nullable = false)
-    private List<Address> addressesOfCustomer; */
+    private List<Address> addressesOfCustomer;
 
-    /* @OneToMany(mappedBy = "customer",
+    @OneToMany(mappedBy = "customer",
                   fetch = FetchType.LAZY)
      @Fetch(value = FetchMode.SUBSELECT)
      @Column(nullable = false)
-     private List<Order> ordersOfCustomer; */
+    private List<Order> ordersOfCustomer;
 
 }
