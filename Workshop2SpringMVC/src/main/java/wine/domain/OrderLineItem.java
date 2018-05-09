@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import wine.utility.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 @Data
@@ -12,7 +15,7 @@ import javax.validation.constraints.Positive;
 @EqualsAndHashCode(callSuper=false)
 public class OrderLineItem extends BaseEntity<Long> {
 
-    /*@NotNull
+    @NotNull
     @ManyToOne(optional = false)
 	@JoinColumn(name = "orderID",
 				referencedColumnName = "id")
@@ -21,7 +24,7 @@ public class OrderLineItem extends BaseEntity<Long> {
     @NotNull
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "productID",
-				referencedColumnName = "id") */
+				referencedColumnName = "id")
 	private Product product;
 
     @Positive

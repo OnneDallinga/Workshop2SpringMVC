@@ -18,10 +18,8 @@ public class Address extends BaseEntity<Long> {
         DELIVERY
     }
 
-    /*@ManyToOne(optional = false)
-	@JoinColumn(name = "id",
-				nullable = false)
-    private Customer customer;*/
+    @ManyToOne(optional = false)
+    private Customer customer;
 
     private String street;
 
