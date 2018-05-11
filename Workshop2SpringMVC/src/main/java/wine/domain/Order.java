@@ -15,6 +15,7 @@ import java.util.ListIterator;
 @Data
 @Entity
 @EqualsAndHashCode(callSuper=true)
+@Table(name="`order`")
 public class Order extends BaseEntity<Long> {
 
     @NotNull
