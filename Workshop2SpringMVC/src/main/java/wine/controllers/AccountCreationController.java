@@ -6,9 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
 
 import lombok.extern.slf4j.Slf4j;
 import wine.configuration.RegistrationForm;
+import wine.domain.Account;
 import wine.repositories.AccountRepository;
 
 @Slf4j
@@ -22,7 +24,8 @@ public class AccountCreationController implements ControllerInterface {
 	private PasswordEncoder passwordEncoder;
 
 	@GetMapping
-	public String registerForm() {
+	public String registerForm(Model model) {
+		model.addAttribute("registrationForm", new RegistrationForm());
 		return "register";
 	}
 

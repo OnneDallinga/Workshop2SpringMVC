@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,13 +25,13 @@ public class LoginController implements ControllerInterface {
 	}
 
 	@PostMapping
-	public String processDesign(@Valid Account account, Errors errors) {
+	public String processDesign(@ModelAttribute Account account) {
 		if (account.getUsername().equals("Onne")) {
 			return "redirect:/home";
 		}
-		if (errors.hasErrors()) {
+		/*if (errors.hasErrors()) {
 			return "account";
-		}
+		}*/
 		return "redirect:/home";
 	}
 }
