@@ -7,9 +7,11 @@ import wine.domain.Wine;
 import java.util.Optional;
 import java.util.Set;
 
-public interface ProductRepository extends CrudRepository<Wine, Long> {
+public interface ProductRepository extends CrudRepository<Product, Long> {
 
     Optional<Product> findByName(String name);
+
+    Optional<Product> findById(Long id);
 
     //Set<Product> findAllOutOfStock();
 

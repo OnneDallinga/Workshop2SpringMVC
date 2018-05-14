@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import wine.domain.Product;
 
 import java.util.Optional;
+import java.util.OptionalInt;
 
 import static org.junit.Assert.*;
 
@@ -26,11 +27,16 @@ public class ProductRepositoryIT {
     }
 
     @Test
-    public void findByName() {
+    public void findById() {
+        Optional<Product> productOptional = productRepository.findById(1L);
 
+        assertEquals(Long.valueOf(1L), productOptional.get().getId());
+    }
+
+    @Test
+    public void findByName() {
         Optional<Product> productOptional = productRepository.findByName("Avec La Poisson");
 
         assertEquals("Avec La Poisson", productOptional.get().getName());
-
     }
 }

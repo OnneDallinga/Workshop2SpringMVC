@@ -6,6 +6,7 @@ import wine.domain.Product;
 import wine.repositories.ProductRepository;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
@@ -16,6 +17,24 @@ public class ProductServiceImpl implements ProductService {
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    @Override
+    public Product getProductById(Long id) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        if(!productOptional.isPresent()) {
+            throw new RuntimeException("No product found with id: " + id);
+        }
+        return productOptional.get();
+    }
+
+    @Override
+    public Product getProductByName(String name) {
+        Optional<Product> productOptional = productRepository.findByName(name);
+        if(!productOptional.isPresent()) {
+            throw new RuntimeException("No product found with name: " + name);
+        }
+        return productOptional.get();
     }
 
     @Override
