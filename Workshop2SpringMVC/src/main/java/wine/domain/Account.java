@@ -11,6 +11,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import lombok.EqualsAndHashCode;
+
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,6 +37,7 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	private String encryptedPassword;
     
     @SuppressWarnings("unused")
+    @ColumnDefault("true")
 	private boolean enabled;
 
     public Account(String username, String password) {
