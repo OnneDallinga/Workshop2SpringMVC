@@ -2,15 +2,20 @@ package wine.services;
 
 import wine.domain.Product;
 
-import java.util.Optional;
-import java.util.Set;
-
 public interface ProductService {
 
-    Product getProductById(Long id);
+    // Create & Update
 
-    Product getProductByName(String name);
+    Product save(Product product);
 
-    Set<Product> getAllProducts();
+    // Read
+
+    Product findProductById(Long id);
+
+    Iterable<Product> findAllProducts();
+
+    // Delete
+
+    void deleteById(Long id);
 
 }

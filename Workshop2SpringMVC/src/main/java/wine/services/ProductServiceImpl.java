@@ -2,6 +2,7 @@ package wine.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import wine.domain.Product;
 import wine.repositories.ProductRepository;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @Slf4j
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
@@ -20,7 +22,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(Long id) {
+    public Product save(Product detachedProduct) {
+        Product savedProduct = productRepository.save(detachedProduct);
+        log.debug("Saved product with id: " + savedProduct.getId());
+        return savedProduct;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Product findProductById(Long id) {
         Optional<Product> productOptional = productRepository.findById(id);
         if(!productOptional.isPresent()) {
             throw new RuntimeException("No product found with id: " + id);
@@ -29,18 +39,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductByName(String name) {
-        Optional<Product> productOptional = productRepository.findByName(name);
-        if(!productOptional.isPresent()) {
-            throw new RuntimeException("No product found with name: " + name);
-        }
-        return productOptional.get();
+    @Transactional(readOnly = true)
+    public Iterable<Product> findAllProducts() {
+        return productRepository.findAll();
     }
 
     @Override
-    public Set<Product> getAllProducts() {
-        Set<Product> productSet = new HashSet<>();
-        productRepository.findAll().iterator().forEachRemaining(productSet::add);
-        return productSet;
+    public void deleteById(Long idToDelete) {
+        productRepository.deleteById(idToDelete);
+        log.debug("Deleted product with id: " + idToDelete);
     }
 }
