@@ -59,6 +59,6 @@ public class CustomerController {
 		
 		//accountRepo.save(registrationForm.toAccount(passwordEncoder));
 		customerRepo.save(newCustomer);
-		return "redirect:/customer";
+		return "redirect:/home";
 	}
 }
