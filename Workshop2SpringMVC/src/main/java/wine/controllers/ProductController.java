@@ -1,6 +1,5 @@
 package wine.controllers;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,13 +38,13 @@ public class ProductController implements ControllerInterface {
         return "products/productform";
     }
 
-    @PostMapping
+    @PostMapping("product")
     public String saveProduct(@ModelAttribute Product product) {
         productService.save(product);
         return "redirect:/products/" + product.getId() + "/show";
     }
 
-    @GetMapping("product/{id}/delete")
+    @GetMapping("products/{id}/delete")
     public String deleteProductById(@PathVariable Long id) {
         productService.deleteById(id);
         return "redirect:/products";

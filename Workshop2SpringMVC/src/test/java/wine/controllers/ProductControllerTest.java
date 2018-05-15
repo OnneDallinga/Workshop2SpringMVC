@@ -100,7 +100,7 @@ public class ProductControllerTest {
     public void deleteProductTest() throws Exception {
         mockMvc.perform(delete("/products/1/delete"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/"));
+                .andExpect(view().name("redirect:/products"));
 
         verify(productService, times(1)).deleteById(anyLong());
     }
