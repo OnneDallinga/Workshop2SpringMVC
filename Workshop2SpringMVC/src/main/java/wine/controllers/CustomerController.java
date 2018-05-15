@@ -3,7 +3,9 @@ package wine.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +43,11 @@ public class CustomerController {
 
 	@PostMapping
 	public String processRegistration(@Valid CustomerForm customerForm,
-			Errors errors, @AuthenticationPrincipal(expression = "account") Account account) {
+			Errors errors) {
+		
+		Authentication authentication =
+			    SecurityContextHolder.getContext().getAuthentication();
+		Account account = (Account) authentication.getPrincipal();
 		
 		if (errors.hasErrors()) {
 			return "customer";
