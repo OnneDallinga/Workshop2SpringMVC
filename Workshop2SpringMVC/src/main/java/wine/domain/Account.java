@@ -31,8 +31,6 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	@NotNull
 	@Column(unique=true)
     private String username;
-	
-	private long id;
 
     @NotNull
     @SuppressWarnings("unused")
@@ -90,10 +88,6 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	public String getPassword() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public long getId() {
-		return id;
 	}
 
 	public String getEncryptedPassword() {

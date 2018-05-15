@@ -24,8 +24,6 @@ public class Customer extends BaseEntity<Long> {
 			fetch = FetchType.LAZY,
 			optional = false)
     private Account account;
-	
-	private long id;
 
     @Pattern(regexp="[a-zA-Z]",
              message="Your first name cannot contain any numbers or special characters.")
@@ -69,10 +67,6 @@ public class Customer extends BaseEntity<Long> {
     
     public void setAccount (Account account) {
     	this.account = account;
-    }
-    
-    public void setId (long id) {
-    	this.id = id;
     }
 
 }

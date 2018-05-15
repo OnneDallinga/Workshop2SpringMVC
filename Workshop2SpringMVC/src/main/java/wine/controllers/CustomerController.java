@@ -3,6 +3,7 @@ package wine.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -47,7 +48,8 @@ public class CustomerController {
 		
 		Authentication authentication =
 			    SecurityContextHolder.getContext().getAuthentication();
-		Account account = (Account) authentication.getPrincipal();
+		User user = (User) authentication.getPrincipal();
+		Account account = accountRepo.findByUsername(user.getName());
 		
 		if (errors.hasErrors()) {
 			return "customer";
@@ -55,7 +57,6 @@ public class CustomerController {
 		
 		Customer newCustomer = customerForm.createCustomer();
 		newCustomer.setAccount(account);
-		newCustomer.setId(account.getId());
 		
 		//accountRepo.save(registrationForm.toAccount(passwordEncoder));
 		customerRepo.save(newCustomer);
