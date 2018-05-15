@@ -32,11 +32,4 @@ public class ProductRepositoryIT {
 
         assertEquals(Long.valueOf(1L), productOptional.get().getId());
     }
-
-    @Test
-    public void findByName() {
-        Optional<Product> productOptional = productRepository.findByName("Avec La Poisson");
-
-        assertEquals("Avec La Poisson", productOptional.get().getName());
-    }
 }
