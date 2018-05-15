@@ -16,8 +16,7 @@ public class CustomerForm {
 	@Pattern(regexp = "[a-zA-Z]+", message = "Your last name cannot contain any numbers or special characters.")
 	private String lastName;
 
-	@Size(min=0)
-	@Pattern(regexp = "[a-zA-Z]+", message = "Your preposition cannot contain any numbers or special characters")
+	@Pattern(regexp = "(^$|^[a-zA-Z]+)", message = "Your preposition cannot contain any numbers or special characters")
 	private String lastNamePreposition;
 
 	@Email
