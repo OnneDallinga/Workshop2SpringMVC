@@ -2,6 +2,7 @@ package wine.configuration;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 import wine.domain.Customer;
@@ -9,13 +10,14 @@ import wine.domain.Customer;
 @Data
 public class CustomerForm {
 
-	@Pattern(regexp = "[a-zA-Z]", message = "Your first name cannot contain any numbers or special characters.")
+	@Pattern(regexp = "[a-zA-Z]+", message = "Your first name cannot contain any numbers or special characters.")
 	private String firstName;
 
-	@Pattern(regexp = "[a-zA-Z]", message = "Your first name cannot contain any numbers or special characters.")
+	@Pattern(regexp = "[a-zA-Z]+", message = "Your last name cannot contain any numbers or special characters.")
 	private String lastName;
 
-	@Pattern(regexp = "[a-zA-Z]", message = "Your first name cannot contain any numbers or special characters.")
+	@Size(min=0)
+	@Pattern(regexp = "[a-zA-Z]+", message = "Your preposition cannot contain any numbers or special characters")
 	private String lastNamePreposition;
 
 	@Email
@@ -32,20 +34,40 @@ public class CustomerForm {
 		return firstName;
 	}
 	
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
 	public String getLastName() {
 		return lastName;
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	
 	public String getLastNamePreposition() {
 		return lastNamePreposition;
 	}
 	
+	public void setLastNamePreposition(String lastNamePreposition) {
+		this.lastNamePreposition = lastNamePreposition;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
 	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getPhoneNumber() {
 		return phoneNumber;
+	}
+	
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	
 

@@ -25,23 +25,10 @@ public class Customer extends BaseEntity<Long> {
 			optional = false)
     private Account account;
 
-    @Pattern(regexp="[a-zA-Z]",
-             message="Your first name cannot contain any numbers or special characters.")
     private String firstName;
-
-    @Pattern(regexp="[a-zA-Z]",
-            message="Your first name cannot contain any numbers or special characters.")
     private String lastName;
-
-    @Pattern(regexp="[a-zA-Z]",
-            message="Your first name cannot contain any numbers or special characters.")
     private String lastNamePreposition;
-
-    @Email
     private String email;
-
-    @Pattern(regexp="[0-9]{10}",
-             message="Entry needs to be exactly 10 numbers (e.g. 0611223344). No spaces, dashes etc.")
     private String phoneNumber;
 
     @OneToMany(mappedBy = "customer",
@@ -63,6 +50,10 @@ public class Customer extends BaseEntity<Long> {
     	this.lastNamePreposition = lastNamePreposition;
     	this.email = email;
     	this.phoneNumber = phoneNumber;
+    }
+    
+    public Customer() {
+    	
     }
     
     public void setAccount (Account account) {
