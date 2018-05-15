@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -26,20 +27,12 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
-    @Size(min = 5, message = "Your username must be at least 5 characters long")
-    @Pattern(regexp = "[A-Za-z0-9_]+", message = "Your username must be at least 5 characters long and"
-            + "consist only of letters or numbers")
+	@Column(unique=true)
     private String username;
 
     @NotNull
-    @Size(min = 8, message = "Your password must be at least 8 characters long.")
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$", message = "Your password must contain at least one uppercase letter, one lowercase letter,"
-            + " one number and one special character.")
-
     @SuppressWarnings("unused")
 	private String encryptedPassword;
-    
-    private String password;
     
     @SuppressWarnings("unused")
 	private boolean enabled;
@@ -89,11 +82,8 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
