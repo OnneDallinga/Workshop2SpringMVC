@@ -27,5 +27,26 @@ public class CustomerForm {
 	public Customer createCustomer() {
 		return new Customer(firstName, lastName, lastNamePreposition, email, phoneNumber);
 	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public String getLastNamePreposition() {
+		return lastNamePreposition;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	
 
 }

@@ -96,4 +96,8 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 		return id;
 	}
 
+	public String getEncryptedPassword() {
+		return this.encryptedPassword;
+	}
+	
 }

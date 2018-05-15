@@ -40,7 +40,8 @@ public class CustomerController {
 	}
 
 	@PostMapping
-	public String processRegistration(@Valid CustomerForm customerForm, @Valid RegistrationForm registrationForm,  Errors errors, @AuthenticationPrincipal Account account) {
+	public String processRegistration(@Valid CustomerForm customerForm,
+			Errors errors, @AuthenticationPrincipal(expression = "account") Account account) {
 		
 		if (errors.hasErrors()) {
 			return "customer";
