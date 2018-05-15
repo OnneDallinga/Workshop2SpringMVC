@@ -1,5 +1,7 @@
 package wine.controllers;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +46,9 @@ public class CustomerController {
 
 	@PostMapping
 	public String processRegistration(@Valid CustomerForm customerForm,
-			Errors errors) {
+			Errors errors, Principal principal) {
 		
-		Authentication authentication =
-			    SecurityContextHolder.getContext().getAuthentication();
-		User user = (User) authentication.getPrincipal();
-		Account account = accountRepo.findByUsername(user.getName());
+		Account account = accountRepo.findByUsername(principal.getName());
 		
 		if (errors.hasErrors()) {
 			return "customer";

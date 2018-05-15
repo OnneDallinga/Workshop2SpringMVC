@@ -68,12 +68,8 @@ public class Customer extends BaseEntity<Long> {
     public void setAccount (Account account) {
     	this.account = account;
     }
-<<<<<<< HEAD
-=======
     
     public void setId (Long id) {
     	this.id = id;
     }
->>>>>>> branch 'developer' of https://github.com/OnneDallinga/Workshop2SpringMVC.git
-
 }

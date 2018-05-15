@@ -21,26 +21,27 @@ import lombok.RequiredArgsConstructor;
 import wine.utility.BaseEntity;
 
 @Entity
-@EqualsAndHashCode(callSuper = false, of = {"username"})
-//@RequiredArgsConstructor
-//@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true) > volgens geeft dit een comp error omdat er een final field is (serialVersionUID)
+@EqualsAndHashCode(callSuper = false, of = { "username" })
+// @RequiredArgsConstructor
+// @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true) > volgens
+// geeft dit een comp error omdat er een final field is (serialVersionUID)
 public class Account extends BaseEntity<Long> implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
-	@Column(unique=true)
-    private String username;
+	@Column(unique = true)
+	private String username;
 
-    @NotNull
-    @SuppressWarnings("unused")
+	@NotNull
+	@SuppressWarnings("unused")
 	private String encryptedPassword;
-    
-    @SuppressWarnings("unused")
-    @ColumnDefault("true")
+
+	@SuppressWarnings("unused")
+	@ColumnDefault("true")
 	private boolean enabled;
 
-    public Account(String username, String password) {
+	public Account(String username, String password) {
 		this.username = username;
 		this.encryptedPassword = password;
 		this.createdOn = new Date();
@@ -52,37 +53,37 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	}
 
 	public String getUsername() {
-        return username;
-    }
+		return username;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
-    }
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+	}
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
 	@Override
 	public String getPassword() {
@@ -90,15 +91,12 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 		return null;
 	}
 
-<<<<<<< HEAD
-=======
 	public Long getId() {
 		return id;
 	}
 
->>>>>>> branch 'developer' of https://github.com/OnneDallinga/Workshop2SpringMVC.git
 	public String getEncryptedPassword() {
 		return this.encryptedPassword;
 	}
-	
+
 }
