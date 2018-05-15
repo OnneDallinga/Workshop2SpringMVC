@@ -50,13 +50,6 @@ public class CustomerController {
 		
 		Account account = accountRepo.findByUsername(principal.getName());
 		
-		System.out.println(account.getUsername());
-		System.out.println(customerForm.getFirstName());
-		System.out.println(customerForm.getLastName());
-		System.out.println(customerForm.getLastNamePreposition());
-		System.out.println(customerForm.getEmail());
-		System.out.println(customerForm.getPhoneNumber());
-		
 		if (errors.hasErrors()) {
 			return "customer";
 		}
