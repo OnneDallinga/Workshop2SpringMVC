@@ -31,6 +31,8 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	@NotNull
 	@Column(unique=true)
     private String username;
+	
+	private long id;
 
     @NotNull
     @SuppressWarnings("unused")
@@ -45,6 +47,7 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 		this.encryptedPassword = password;
 		this.createdOn = new Date();
 		this.lastModifiedOn = new Date();
+		this.enabled = true;
 	}
 
 	public Account() {
@@ -87,6 +90,10 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	public String getPassword() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public long getId() {
+		return id;
 	}
 
 }

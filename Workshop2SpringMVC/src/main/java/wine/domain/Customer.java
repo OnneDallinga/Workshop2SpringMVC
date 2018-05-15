@@ -17,11 +17,15 @@ import java.util.List;
 @EqualsAndHashCode(callSuper=false, exclude={"account"})
 public class Customer extends BaseEntity<Long> {
 
+	private static final long serialVersionUID = 1L;
+
 	@PrimaryKeyJoinColumn 
 	@OneToOne(
 			fetch = FetchType.LAZY,
 			optional = false)
     private Account account;
+	
+	private long id;
 
     @Pattern(regexp="[a-zA-Z]",
              message="Your first name cannot contain any numbers or special characters.")
@@ -54,5 +58,21 @@ public class Customer extends BaseEntity<Long> {
      @Fetch(value = FetchMode.SUBSELECT)
      @Column(nullable = false)
     private List<Order> ordersOfCustomer;
+    
+    public Customer(String firstName, String lastName, String lastNamePreposition, String email, String phoneNumber) {
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.lastNamePreposition = lastNamePreposition;
+    	this.email = email;
+    	this.phoneNumber = phoneNumber;
+    }
+    
+    public void setAccount (Account account) {
+    	this.account = account;
+    }
+    
+    public void setId (long id) {
+    	this.id = id;
+    }
 
 }

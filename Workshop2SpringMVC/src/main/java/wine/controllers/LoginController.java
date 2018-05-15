@@ -25,16 +25,18 @@ public class LoginController implements ControllerInterface {
 
 	@GetMapping
 	public String login(Model model) {
-		accountRepo.save(new Account("Onne", passwordEncoder.encode("Hello")));
+		try {
+			accountRepo.save(new Account("Onne", passwordEncoder.encode("Hello")));
+		}
+		catch (Exception e) {
+			
+		}
 		model.addAttribute("account", new Account());
 		return "login";
 	}
 
 	@PostMapping
 	public String processDesign(@ModelAttribute Account account) {
-		if (account.getUsername().equals("Onne")) {
-			return "redirect:/home";
-		}
 		/*if (errors.hasErrors()) {
 			return "account";
 		}*/
