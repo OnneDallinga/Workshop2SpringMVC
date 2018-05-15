@@ -90,6 +90,13 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 		return null;
 	}
 
+<<<<<<< HEAD
+=======
+	public Long getId() {
+		return id;
+	}
+
+>>>>>>> branch 'developer' of https://github.com/OnneDallinga/Workshop2SpringMVC.git
 	public String getEncryptedPassword() {
 		return this.encryptedPassword;
 	}
