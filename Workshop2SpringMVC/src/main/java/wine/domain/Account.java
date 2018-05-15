@@ -31,8 +31,6 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	@NotNull
 	@Column(unique=true)
     private String username;
-	
-	private long id;
 
     @NotNull
     @SuppressWarnings("unused")
@@ -92,7 +90,7 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 		return null;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
