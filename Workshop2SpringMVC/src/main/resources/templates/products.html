@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
 </head>
 <body>
-    <div class="container-fluid" style="margin-top" 80px">
+    <div class="container-fluid" style="margin-top: 80px">
         <!-- AIM: DISPLAY GLOBAL DATA OF INVENTORY HEALTH -->
 
         <!-- User can view product totals of newly created (within last month), out of stock (current + more than two weeks) -->
@@ -19,7 +19,7 @@
 
         <!-- User can drill down via click to product to display secondary data and perform edits/deletes/updates -->
 
-        <div class="table-reponsive" th:if="${not #lists.isEmpty(products)}">
+        <div class="table-responsive" th:if="${not #lists.isEmpty(products)}">
             <table class="table table-striped table-hover">
                 <caption>List of products in inventory</caption>
                 <thead class="thead-inverse">
@@ -36,7 +36,7 @@
                         <td th:text="${product.name}">Honhonhon</td>
                         <td th:text="${product.price}">40</td>
                         <td th:text="${product.stockQuantity}">123</td>
-                        <td><a href="#" th:href="@{'products/show/' + ${product.id}}"
+                        <td><a href="#" th:href="@{'products/'+ ${product.id} + '/show'}"
                              th:text="${product.id}">View</a></td>
                     </tr>
                 </tbody>
