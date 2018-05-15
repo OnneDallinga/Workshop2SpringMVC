@@ -61,7 +61,7 @@ public class ProductControllerTest {
 
         when(productService.save(any())).thenReturn(product);
 
-        mockMvc.perform(post("/product")
+        mockMvc.perform(post("/products")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("id","")
                 .param("description","stuff goes here")
@@ -90,7 +90,7 @@ public class ProductControllerTest {
 
         when(productService.findProductById(anyLong())).thenReturn(product);
 
-        mockMvc.perform(get("/product/1/update"))
+        mockMvc.perform(get("/products/1/update"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("products/productform"))
                 .andExpect(model().attributeExists("product"));
@@ -98,7 +98,7 @@ public class ProductControllerTest {
 
     @Test
     public void deleteProductTest() throws Exception {
-        mockMvc.perform(delete("/product/1/delete"))
+        mockMvc.perform(delete("/products/1/delete"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/"));
 

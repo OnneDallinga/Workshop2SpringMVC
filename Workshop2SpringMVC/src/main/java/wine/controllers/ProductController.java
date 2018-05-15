@@ -22,18 +22,18 @@ public class ProductController implements ControllerInterface {
         return "products";
     }
 
-    @GetMapping("/product/{id}/show")
+    @GetMapping("/products/{id}/show")
     public String showProductById(@PathVariable Long id, Model model) {
         model.addAttribute("product", productService.findProductById(id));
         return "products/show";
     }
 
-    @GetMapping("/product/new")
+    @GetMapping("/products/new")
     public String newProduct(@ModelAttribute Product product) {
         return "products/productform";
     }
 
-    @GetMapping("/product/{id}/edit")
+    @GetMapping("/products/{id}/edit")
     public String updateProduct(@PathVariable Long id, Model model) {
         model.addAttribute("product", productService.findProductById(id));
         return "products/productform";
