@@ -8,7 +8,6 @@ import wine.domain.Product;
 import wine.domain.Wine;
 import wine.repositories.ProductRepository;
 
-import java.sql.SQLOutput;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -18,6 +17,8 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 public class ProductServiceImplTest {
+
+    public static final Long WINE_ID = 1L;
 
     ProductServiceImpl productService;
 
@@ -32,32 +33,28 @@ public class ProductServiceImplTest {
 
     // Testing via Wine class only as its currently the only implementation of the abstract Product superclass
 
-    // Passes
+    @Test
+    public void saveProductTest() {
+        Product wine = new Wine();
+
+        when(productRepository.save(any())).thenReturn(wine);
+
+        Product wineSaved = productService.save(wine);
+        assertNotNull(wineSaved);
+        verify(productRepository,times(1)).save(any());
+    }
 
     @Test
     public void getProductByIdTest() {
         Product wine = new Wine();
-        wine.setId(10L);
+        wine.setId(WINE_ID);
         Optional<Product> wineOptional = Optional.of(wine);
 
         when(productRepository.findById(anyLong())).thenReturn(wineOptional);
 
-        Product wineRetrieved = productService.getProductById(10L);
+        Product wineRetrieved = productService.findProductById(WINE_ID);
         assertNotNull(wineRetrieved);
         verify(productRepository, times(1)).findById(anyLong());
-    }
-
-    @Test
-    public void getProductByNameTest() {
-        Product wine = new Wine();
-        wine.setName("Sacre Bleu");
-        Optional<Product> wineOptional = Optional.of(wine);
-
-        when(productRepository.findByName(anyString())).thenReturn(wineOptional);
-
-        Product wineRetrieved = productService.getProductByName(anyString());
-        assertNotNull(wineRetrieved);
-        verify(productRepository, times(1)).findByName(anyString());
     }
 
     @Test
@@ -65,10 +62,20 @@ public class ProductServiceImplTest {
         HashSet<Product> productsData = new HashSet<>();
         productsData.add(new Wine());
 
-        when(productService.getAllProducts()).thenReturn(productsData);
+        when(productService.findAllProducts()).thenReturn(productsData);
 
-        Set<Product> products = productService.getAllProducts();
+        Set<Product> products = (Set<Product>)productService.findAllProducts();
         assertEquals(products.size(), 1);
         verify(productRepository, times(1)).findAll();
+    }
+
+    @Test
+    public void deleteProductTest() {
+        Long idToDelete = Long.valueOf(WINE_ID);
+        productService.deleteById(idToDelete);
+
+        // method is void so no when clause needed
+
+        verify(productRepository,times(1)).deleteById(idToDelete);
     }
 }
