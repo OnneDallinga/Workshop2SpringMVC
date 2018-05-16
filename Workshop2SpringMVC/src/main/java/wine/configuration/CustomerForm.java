@@ -1,5 +1,7 @@
 package wine.configuration;
 
+import java.security.Principal;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -27,6 +29,15 @@ public class CustomerForm {
 
 	public Customer createCustomer() {
 		return new Customer(firstName, lastName, lastNamePreposition, email, phoneNumber);
+	}
+	
+	public Customer updateCustomer(Customer customerToBeUpdated) {
+		customerToBeUpdated.setFirstName(firstName);
+		customerToBeUpdated.setLastName(lastName);
+		customerToBeUpdated.setLastNamePreposition(lastNamePreposition);
+		customerToBeUpdated.setEmail(email);
+		customerToBeUpdated.setPhoneNumber(phoneNumber);
+		return customerToBeUpdated;
 	}
 	
 	public String getFirstName() {
