@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
 
-    @Query("SELECT ALL FROM Order o JOIN o.customer c WHERE c.id=:customerId")
+    @Query("FROM Order o JOIN o.customer c WHERE c.id=:customerId")
     public Iterable<Order> findAllByCustomerId(@Param("customerId") Long customerId);
 
 }
