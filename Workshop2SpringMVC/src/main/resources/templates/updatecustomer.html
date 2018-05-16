@@ -8,19 +8,7 @@
   </head>
   <body>
     	<h1>Please update your information below.</h1>
-    	<table>
-    	<thead>
-    	<tr>
-    	<th th:text="#{customerForm.firstName}">First name</th>
-    	<th th:text="#{customerForm.lastName}">Last name</th>
-    	<th th:text="#{customerForm.lastNamePreposition}">Last name preposition</th>
-    	<th th:text="#{customerForm.email}">Email</th>
-    	<th th:text="#{customerForm.phoneNumber}">Phone number</th>    	
-    	</tr>
-    	</thead>
-    	</table>
-    	
-    	
+
     	
     <form action="#" th:action="@{/updatecustomer}" th:object="${customerForm}" method="post">
     	<div th:if="${#fields.hasErrors('*')}">
