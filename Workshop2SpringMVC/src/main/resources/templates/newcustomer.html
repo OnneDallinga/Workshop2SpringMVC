@@ -9,8 +9,10 @@
 
   <body>
 
-    	<h1>Please enter your information below.</h1>
+
     <form action="#" th:action="@{/newcustomer}" th:object="${customerForm}" method="post">
+    <div th:replace="fragments/navbar :: navbar"></div>
+        	<h3>Please enter your information below.</h3>
     	<div th:if="${#fields.hasErrors('*')}">
 			<ul>
 				<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
