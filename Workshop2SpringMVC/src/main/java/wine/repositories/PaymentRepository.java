@@ -1,4 +1,8 @@
 package wine.repositories;
 
-public interface PaymentRepository {
+import org.springframework.data.repository.CrudRepository;
+import wine.domain.Payment;
+
+public interface PaymentRepository extends CrudRepository<Payment, Long> {
+
 }
