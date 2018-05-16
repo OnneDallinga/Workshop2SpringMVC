@@ -30,6 +30,7 @@ public class Customer extends BaseEntity<Long> {
     private String lastNamePreposition;
     private String email;
     private String phoneNumber;
+    
 
     @OneToMany(mappedBy = "customer",
             fetch = FetchType.EAGER,
