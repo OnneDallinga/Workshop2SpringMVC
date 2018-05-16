@@ -6,24 +6,22 @@ import org.springframework.transaction.annotation.Transactional;
 import wine.domain.Product;
 import wine.repositories.ProductRepository;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 @Slf4j
 @Service
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository productRepository;
+    private final ProductRepository productRepo;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductServiceImpl(ProductRepository productRepo) {
+        this.productRepo = productRepo;
     }
 
     @Override
     public Product save(Product detachedProduct) {
-        Product savedProduct = productRepository.save(detachedProduct);
+        Product savedProduct = productRepo.save(detachedProduct);
         log.debug("Saved product with id: " + savedProduct.getId());
         return savedProduct;
     }
@@ -31,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(readOnly = true)
     public Product findProductById(Long id) {
-        Optional<Product> productOptional = productRepository.findById(id);
+        Optional<Product> productOptional = productRepo.findById(id);
         if(!productOptional.isPresent()) {
             throw new RuntimeException("No product found with id: " + id);
         }
@@ -41,12 +39,18 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(readOnly = true)
     public Iterable<Product> findAllProducts() {
-        return productRepository.findAll();
+        return productRepo.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Iterable<Product> findAllProductsOutOfStock() {
+        return productRepo.findAllProductsOutOfStock();
     }
 
     @Override
     public void deleteById(Long idToDelete) {
-        productRepository.deleteById(idToDelete);
+        productRepo.deleteById(idToDelete);
         log.debug("Deleted product with id: " + idToDelete);
     }
 }

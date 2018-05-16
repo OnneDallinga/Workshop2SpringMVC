@@ -10,6 +10,9 @@ public interface ProductService {
 
     Iterable<Product> findAllProducts();
 
+    // TODO implement in controller
+    Iterable<Product> findAllProductsOutOfStock();
+
     void deleteById(Long id);
 
 }
