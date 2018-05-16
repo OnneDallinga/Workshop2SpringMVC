@@ -4,13 +4,16 @@
 <head>
     <title>The best wine web site in the world</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
-    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
 </head>
 
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<h1>Welcome to...</h1>
-<img th:src="@{/images/Wine.png}" class="img-fluid"/>
+<div class="bg-img">
+    <div class="content-container">
+        <h1 align="center">Wijn is fijn</h1>
+    </div>
+    </div>
 <div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
