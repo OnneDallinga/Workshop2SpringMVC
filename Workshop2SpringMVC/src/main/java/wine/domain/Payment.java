@@ -28,8 +28,6 @@ public class Payment extends BaseEntity<Long> {
     }
 
     @OneToOne
-    @JoinColumn(name = "invoiceID",
-				referencedColumnName = "id")
     private Invoice invoice;
 
     @NotNull
