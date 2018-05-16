@@ -30,7 +30,6 @@ public class Payment extends BaseEntity<Long> {
     @OneToOne
     private Invoice invoice;
 
-    @NotNull
     private PaymentMethod paymentMethod;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
