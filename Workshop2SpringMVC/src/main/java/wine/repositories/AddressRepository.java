@@ -1,6 +1,8 @@
 package wine.repositories;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import wine.domain.Address;
 import wine.domain.Customer;
 
@@ -9,8 +11,10 @@ import java.util.Set;
 
 public interface AddressRepository extends CrudRepository<Address, Long> {
 
-    //Set<Address> findAddressesByCustomer(Customer customer);
+    @Query("FROM Address a JOIN a.customer c WHERE c.id=customerId")
+    Iterable<Address> findAddressesByCustomerId(@Param("customerId") Long customerId);
 
-    //Optional<Address> findByPostalCode(String postalCode);
+    @Query("FROM Address a WHERE a.postalCode=postalCode")
+    Optional<Address> findAddressByPostalCode(@Param("postalCode") String postalCode);
 
 }
