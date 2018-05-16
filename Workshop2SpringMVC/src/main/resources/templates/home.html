@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html 
-      xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html
+        xmlns:th="http://www.thymeleaf.org">
+<head>
     <title>The best wine web site in the world</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
-  </head>
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
 
-  <body>
-      <p>Click here to finish your account
-       <a th:href="@{/customer}">here</a> to register.</p>
-  
-    <h1>Welcome to...</h1>
-    <img th:src="@{/images/Wine.png}"/>
-  </body>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h1>Welcome to...</h1>
+<img th:src="@{/images/Wine.png}" class="img-responsive"/>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
 </html>
