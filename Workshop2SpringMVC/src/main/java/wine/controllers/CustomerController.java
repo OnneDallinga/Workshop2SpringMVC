@@ -1,8 +1,6 @@
 package wine.controllers;
 
 import java.security.Principal;
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +27,6 @@ public class CustomerController {
 	@Autowired
 	private CustomerRepository customerRepo;
 	@Autowired
-	private PasswordEncoder passwordEncoder;
-	@Autowired
 	private AccountRepository accountRepo;
 
 	@GetMapping("/customer")
@@ -54,7 +50,6 @@ public class CustomerController {
 
 	@PostMapping("/updatecustomer")
 	public String updateCustomer(@Valid CustomerForm customerForm, Errors errors, Principal principal) {
-
 		if (errors.hasErrors()) {
 			return "newcustomer";
 		}
@@ -67,17 +62,12 @@ public class CustomerController {
 
 	@PostMapping("/newcustomer")
 	public String processRegistration(@Valid CustomerForm customerForm, Errors errors, Principal principal) {
-
 		Account account = accountRepo.findByUsername(principal.getName());
-
 		if (errors.hasErrors()) {
 			return "newcustomer";
 		}
-
 		Customer newCustomer = customerForm.createCustomer();
 		newCustomer.setAccount(account);
-
-		// accountRepo.save(registrationForm.toAccount(passwordEncoder));
 		customerRepo.save(newCustomer);
 		return "redirect:/home";
 	}
