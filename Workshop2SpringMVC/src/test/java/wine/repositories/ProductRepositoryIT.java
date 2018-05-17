@@ -6,10 +6,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import wine.domain.Product;
+import wine.domain.Wine;
 
 import java.util.Optional;
-import java.util.OptionalInt;
 
 import static org.junit.Assert.*;
 
@@ -17,10 +16,10 @@ import static org.junit.Assert.*;
 @DataJpaTest
 public class ProductRepositoryIT {
 
-    // Doesn't pass yet due to no proper mapping+db data in place
+    // Doesn't pass yet due to create-drop Hibernate
 
     @Autowired
-    ProductRepository productRepository;
+    WineRepository wineRepository;
 
     @Before
     public void setUp() throws Exception {
@@ -28,8 +27,8 @@ public class ProductRepositoryIT {
 
     @Test
     public void findById() {
-        Optional<Product> productOptional = productRepository.findById(1L);
+        Optional<Wine> wineOptional = wineRepository.findById(1L);
 
-        assertEquals(Long.valueOf(1L), productOptional.get().getId());
+        assertEquals(Long.valueOf(1L), wineOptional.get().getId());
     }
 }
