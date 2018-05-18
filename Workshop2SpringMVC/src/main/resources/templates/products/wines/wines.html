@@ -10,18 +10,18 @@
     <div class="container-fluid" style="margin-top: 80px">
         <!-- AIM: DISPLAY GLOBAL DATA OF INVENTORY HEALTH -->
 
-        <!-- User can view product totals of newly created (within last month), out of stock (current + more than two weeks) -->
+        <!-- User can view totals of newly created (within last month), out of stock (current + more than two weeks) -->
 
     </div>
     <div class="container-fluid" style="margin-top: 80px">
 
-        <!-- AIM: DISPLAY A TABLE WITH ALL PRODUCT RELATED DATA -->
+        <!-- AIM: DISPLAY A TABLE WITH ALL WINE RELATED DATA -->
 
-        <!-- User can drill down via click to product to display secondary data and perform edits/deletes/updates -->
+        <!-- User can click-through per wine to display secondary data and perform edits/deletes -->
 
-        <div class="table-responsive" th:if="${not #lists.isEmpty(products)}">
+        <div class="table-responsive" th:if="${not #lists.isEmpty(wines)}">
             <table class="table table-striped table-hover">
-                <caption>List of products in inventory</caption>
+                <caption>List of current wines in inventory</caption>
                 <thead class="thead-inverse">
                     <tr>
                         <th scope="col">ID</th>
@@ -31,13 +31,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="product : ${products}">
-                        <td th:text="${product.id}">123</td>
-                        <td th:text="${product.name}">Honhonhon</td>
-                        <td th:text="${product.price}">40</td>
-                        <td th:text="${product.stockQuantity}">123</td>
-                        <td><a href="#" th:href="@{'products/'+ ${product.id} + '/show'}"
-                             th:text="${product.id}">View</a></td>
+                    <tr th:each="wine : ${wines}">
+                        <td th:text="${wine.id}">123</td>
+                        <td th:text="${wine.name}">Honhonhon</td>
+                        <td th:text="${wine.year}">40</td>
+                        <td th:text="${wine.stockQuantity}">123</td>
+                        <td><a href="#" th:href="@{'products/wines'+ ${wine.id} + '/show'}"
+                             th:text="${wine.id}">View</a></td>
                     </tr>
                 </tbody>
             </table>

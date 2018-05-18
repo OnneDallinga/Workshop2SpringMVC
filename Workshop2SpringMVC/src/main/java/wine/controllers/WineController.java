@@ -19,36 +19,36 @@ public class WineController {
     @GetMapping("/all")
     public String listWines(Model model) {
         model.addAttribute("wines", wineService.findAllWines());
-        return "products";
+        return "products/wines/wines";
     }
 
     @GetMapping("/{id}/show")
     public String showWineById(@PathVariable Long id, Model model) {
         model.addAttribute("wine", wineService.findWineById(id));
-        return "wines/show";
+        return "products/wines/show";
     }
 
     @GetMapping("/new")
     public String newWine(@ModelAttribute Wine wine) {
-        return "wines/wineform";
+        return "products/wines/wineform";
     }
 
     @GetMapping("/{id}/edit")
     public String updateWine(@PathVariable Long id, Model model) {
         model.addAttribute("wine", wineService.findWineById(id));
-        return "wines/wineform";
+        return "products/wines/wineform";
     }
 
     @PostMapping("wine")
     public String saveWine(@ModelAttribute Wine wine) {
         wineService.save(wine);
-        return "redirect:/" + wine.getId() + "/show";
+        return "redirect:/products/wines/" + wine.getId() + "/show";
     }
 
     @GetMapping("/{id}/delete")
     public String deleteWineById(@PathVariable Long id) {
         wineService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/products/wines";
     }
 
 }
