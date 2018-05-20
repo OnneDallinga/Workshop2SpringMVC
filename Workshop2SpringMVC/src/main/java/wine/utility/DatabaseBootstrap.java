@@ -1,4 +1,4 @@
-package wine.bootstrap;
+package wine.utility;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
@@ -14,11 +14,11 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class DataBootstrap implements ApplicationListener<ContextRefreshedEvent> {
+public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final WineRepository wineRepo;
 
-    public DataBootstrap(WineRepository wineRepo) {
+    public DatabaseBootstrap(WineRepository wineRepo) {
         this.wineRepo = wineRepo;
     }
 
@@ -26,7 +26,7 @@ public class DataBootstrap implements ApplicationListener<ContextRefreshedEvent>
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         wineRepo.saveAll(getWines());
-        log.debug("Loading Bootstrap Data for wines");
+        log.debug("Loading Bootstrap Data for Wines");
     }
 
     private List<Wine> getWines() {
@@ -59,7 +59,36 @@ public class DataBootstrap implements ApplicationListener<ContextRefreshedEvent>
         wine2.setYear(2011);
         wine2.setAlcoholPercentage(13.8);
         wines.add(wine2);
+
+        Wine wine3 = new Wine();
+        wine3.setName("Meukwijn");
+        wine3.setPrice(new BigDecimal("1"));
+        wine3.setStockQuantity(30);
+        wine3.setDescription("Gewoon... niet zo lekker spul joh. Ik zou 't niet doen als ik jou was.");
+        wine3.setWineClassification(Wine.WineClassification.DESSERT);
+        wine3.setContentInMl(1000);
+        wine3.setCountryOfOrigin("Spanje");
+        wine3.setRegion("Rioja");
+        wine3.setGrapeVariety("Syrah");
+        wine3.setYear(3011);
+        wine3.setAlcoholPercentage(13.8);
+        wines.add(wine3);
+
+        Wine wine4 = new Wine();
+        wine4.setName("Meukwijn");
+        wine4.setPrice(new BigDecimal("1"));
+        wine4.setStockQuantity(40);
+        wine4.setDescription("Gewoon... niet zo lekker spul joh. Ik zou 't niet doen als ik jou was.");
+        wine4.setWineClassification(Wine.WineClassification.DESSERT);
+        wine4.setContentInMl(1000);
+        wine4.setCountryOfOrigin("Spanje");
+        wine4.setRegion("Rioja");
+        wine4.setGrapeVariety("Syrah");
+        wine4.setYear(4011);
+        wine4.setAlcoholPercentage(14.8);
+        wines.add(wine4);
         
         return wines;
     }
 }
+
