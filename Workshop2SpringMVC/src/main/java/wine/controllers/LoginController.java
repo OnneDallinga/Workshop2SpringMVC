@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,7 @@ public class LoginController implements ControllerInterface {
 			accountRepo.save(new Account("Onne", passwordEncoder.encode("Hello")));
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			
 		}
 		model.addAttribute("account", new Account());
@@ -36,10 +38,10 @@ public class LoginController implements ControllerInterface {
 	}
 
 	@PostMapping
-	public String processDesign(@ModelAttribute Account account) {
-		/*if (errors.hasErrors()) {
-			return "account";
-		}*/
+	public String processDesign(@ModelAttribute Account account, Errors errors) {
+		if (errors.hasErrors()) {
+			return "login";
+		}
 		return "redirect:/home";
 	}
 }

@@ -6,18 +6,19 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import lombok.EqualsAndHashCode;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.RequiredArgsConstructor;
+import wine.repositories.AuthorityRepository;
 import wine.utility.BaseEntity;
 
 @Entity
@@ -40,13 +41,18 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	@SuppressWarnings("unused")
 	@ColumnDefault("true")
 	private boolean enabled;
+	
+	@Autowired
+	@Transient
+	private AuthorityRepository authorityRepo;
 
 	public Account(String username, String password) {
 		this.username = username;
 		this.encryptedPassword = password;
 		this.createdOn = new Date();
-		this.lastModifiedOn = new Date();
+		this.lastModifiedOn = createdOn;
 		this.enabled = true;
+		authorityRepo.save(new Authorities(this.id, username));
 	}
 
 	public Account() {

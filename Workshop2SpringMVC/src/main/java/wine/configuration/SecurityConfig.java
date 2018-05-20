@@ -13,12 +13,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import wine.repositories.AccountRepository;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	private UserDetailsService userDetailsService;
+	private AccountRepository accountRepo;
 
 	@Autowired
 	DataSource dataSource;
@@ -38,20 +40,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	      .usersByUsernameQuery(
 	          "select username, encrypted_password, enabled from account " +
 	          "where username=?")
-	      .authoritiesByUsernameQuery(
-	          "select username, authority from authorities " +
-	          "where username=?")
-	      .passwordEncoder(new BCryptPasswordEncoder());; // the encryption
+		  .authoritiesByUsernameQuery(
+		      "select username, authority from authorities " +
+		      "where username=?")
+	      .passwordEncoder(encoder());; // the encryption
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	  http
 	    .authorizeRequests()
-	      //.antMatchers("/home") // choose 1 or more pages
-	        //.access("hasRole('role_admin')") // choose the access level for those pages
-	      .antMatchers("/**").access("permitAll") // choose the access level for all other pages
-	      
+	    .antMatchers("/login", "/register").permitAll()
+	      .antMatchers("/**") // choose 1 or more pages
+	        .hasRole("admin") // choose the access level for those pages
 	      .and()
 	      .formLogin()
 	        .loginPage("/login") // defines login page

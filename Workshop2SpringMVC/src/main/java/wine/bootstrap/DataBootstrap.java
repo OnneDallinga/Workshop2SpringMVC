@@ -1,6 +1,5 @@
 package wine.bootstrap;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -12,10 +11,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @Component
 public class DataBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
+	
+	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(DataBootstrap.class);
     private final WineRepository wineRepo;
 
     public DataBootstrap(WineRepository wineRepo) {
