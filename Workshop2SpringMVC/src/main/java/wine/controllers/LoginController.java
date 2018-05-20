@@ -36,9 +36,7 @@ public class LoginController implements ControllerInterface {
 			accountRepo.save(new Account("Onne", passwordEncoder.encode("Hello")));
 			authorityRepo.save(new Authorities(accountRepo.findByUsername("Onne").getId(), "Onne"));
 		}
-		catch (Exception e) {
-			e.printStackTrace();
-			
+		catch (Exception e) {	
 		}
 		
 		model.addAttribute("account", new Account());
