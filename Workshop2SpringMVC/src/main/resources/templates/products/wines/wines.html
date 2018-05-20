@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Inventory Management</title>
+    <title>Wine Inventory Management</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
     <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
@@ -11,7 +11,7 @@
 <div th:replace="fragments/navbar :: navbar"></div>
 <div class="bg-img">
     <div class="content-container">
-        <h1 align="center">List of wines</h1>
+        <h1 align="center" class="table-header">List of wines</h1>
         <div th:if="${#lists.isEmpty(wines)}">
             <h2 align="center"><a href="/products/wines/new">You can't see that which does not exist. Please add wines
                 first!</a></h2>
@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="table-responsive" th:if="${not #lists.isEmpty(wines)}">
                     <table class="table table-striped table-hover">
-                        <caption>List of current wines in inventory</caption>
+                        <caption class="overview">List of current wines in inventory</caption>
                         <thead class="thead-inverse">
                         <tr>
                             <th scope="col">ID</th>
