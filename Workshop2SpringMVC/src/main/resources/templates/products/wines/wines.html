@@ -12,7 +12,7 @@
 <div class="bg-img">
     <div class="content-container">
         <h1 align="center">List of wines</h1>
-        <div th:if="${wines == null or #lists.isEmpty(wines)}">
+        <div th:if="${#lists.isEmpty(wines)}">
             <h2 align="center"><a href="/products/wines/new">You can't see that which does not exist. Please add wines first!</a></h2>
         </div>
         <div class="table-responsive" th:if="${wines != null and not #lists.isEmpty(wines)}">
@@ -33,7 +33,7 @@
                     <td th:text="${wine.name}">Honhonhon</td>
                     <td th:text="${wine.year}">40</td>
                     <td th:text="${wine.stockQuantity}">123</td>
-                    <td><a href="#" th:href="@{'products/wines'+ ${wine.id} + '/show'}"
+                    <td><a href="#" th:href="@{'products/wines/'+ ${wine.id} + '/show'}"
                            th:text="${wine.id}">View</a></td>
                 </tr>
                 </tbody>
