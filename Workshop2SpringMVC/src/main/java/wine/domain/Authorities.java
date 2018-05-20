@@ -25,9 +25,14 @@ public class Authorities {
 
 	
 	public Authorities (long id, String username) {
+	authorities = new HashSet<>();
 	authorities.add(new SimpleGrantedAuthority("USER"));
 	this.id = id;
 	this.username = username;
+	}
+	
+	public Authorities () {
+		
 	}
 
 }
