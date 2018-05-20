@@ -40,6 +40,7 @@ public class LoginController implements ControllerInterface {
 			e.printStackTrace();
 			
 		}
+		
 		model.addAttribute("account", new Account());
 		return "login";
 	}
