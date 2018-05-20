@@ -13,30 +13,35 @@
     <div class="content-container">
         <h1 align="center">List of wines</h1>
         <div th:if="${#lists.isEmpty(wines)}">
-            <h2 align="center"><a href="/products/wines/new">You can't see that which does not exist. Please add wines first!</a></h2>
+            <h2 align="center"><a href="/products/wines/new">You can't see that which does not exist. Please add wines
+                first!</a></h2>
         </div>
-        <div class="table-responsive" th:if="${wines != null and not #lists.isEmpty(wines)}">
-            <table class="table table-striped table-hover">
-                <caption>List of current wines in inventory</caption>
-                <thead class="thead-inverse">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Stock Quantity</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="wine : ${wines}">
-                    <td th:text="${wine.id}">123</td>
-                    <td th:text="${wine.name}">Honhonhon</td>
-                    <td th:text="${wine.price}">40</td>
-                    <td th:text="${wine.stockQuantity}">123</td>
-                    <td><a href="#" th:href="@{'products/wines/'+ ${wine.id} + '/show'}">View</a></td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="container-fluid">
+            <div class="card" id="overview-table">
+                <div class="table-responsive" th:if="${wines != null and not #lists.isEmpty(wines)}">
+                    <table class="table table-striped table-hover">
+                        <caption>List of current wines in inventory</caption>
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Stock Quantity</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="wine : ${wines}">
+                            <td th:text="${wine.id}">123</td>
+                            <td th:text="${wine.name}">Honhonhon</td>
+                            <td th:text="${wine.price}">40</td>
+                            <td th:text="${wine.stockQuantity}">123</td>
+                            <td><a href="#" th:href="@{'products/wines/'+ ${wine.id} + '/show'}">View</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

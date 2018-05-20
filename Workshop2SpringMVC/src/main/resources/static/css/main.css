@@ -6,6 +6,10 @@ div.content-container {
     padding-top: 60px;
 }
 
+.container-fluid {
+    width: 80%;
+}
+
 .bg-img {
     background: url('../images/wijnisfijn.png');
     -webkit-background-size: cover;
