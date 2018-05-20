@@ -31,10 +31,9 @@
                 <tr th:each="wine : ${wines}">
                     <td th:text="${wine.id}">123</td>
                     <td th:text="${wine.name}">Honhonhon</td>
-                    <td th:text="${wine.year}">40</td>
+                    <td th:text="${wine.price}">40</td>
                     <td th:text="${wine.stockQuantity}">123</td>
-                    <td><a href="#" th:href="@{'products/wines/'+ ${wine.id} + '/show'}"
-                           th:text="${wine.id}">View</a></td>
+                    <td><a href="#" th:href="@{'products/wines/'+ ${wine.id} + '/show'}">View</a></td>
                 </tr>
                 </tbody>
             </table>
