@@ -17,8 +17,8 @@
                 first!</a></h2>
         </div>
         <div class="container-fluid">
-            <div class="card" id="overview-table">
-                <div class="table-responsive" th:if="${wines != null and not #lists.isEmpty(wines)}">
+            <div class="card">
+                <div class="table-responsive" th:if="${not #lists.isEmpty(wines)}">
                     <table class="table table-striped table-hover">
                         <caption>List of current wines in inventory</caption>
                         <thead class="thead-inverse">
