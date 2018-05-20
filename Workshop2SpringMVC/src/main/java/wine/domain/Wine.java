@@ -35,14 +35,14 @@ public class Wine extends Product {
 
     private String countryOfOrigin;
 
-    @Pattern(regexp="^(?:\\w|['-]\\w)+[a-zA-Z](\\\\s?[a-zA-Z]){5,25}$",
-            message="Region name has to be between 5 - 25 letters long. Special characters allowed: \"-\" and \"'\".")
+    // Regex not working properly TODO fix later
+    // @Pattern(regexp="^(?:\\w|['-]\\w)+[a-zA-Z](\\\\s?[a-zA-Z]){5,25}$",
+    //         message="Region name has to be between 5 - 25 letters long. Special characters allowed: \"-\" and \"'\".")
     private String region;
 
     private String grapeVariety;
 
-    @Pattern(regexp="^\\d{0,2}(?:\\.\\d)?$",
-             message="Please follow the following format: \"7.2\", \"14.0\".")
+    @NotNull
     private double alcoholPercentage;
 
 }

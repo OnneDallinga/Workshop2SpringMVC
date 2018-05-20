@@ -23,8 +23,6 @@ public abstract class Product extends BaseEntity<Long> {
     String description;
 
     @Positive
-    @Pattern(regexp="^\\d{0,4}(\\.\\d{2})?$",
-            message="Please follow the following format: \"13.37\", \"8.00\".")
     BigDecimal price;
 
     @PositiveOrZero
