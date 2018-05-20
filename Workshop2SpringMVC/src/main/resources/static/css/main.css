@@ -25,13 +25,46 @@ caption.overview {
     padding-left: 2%;
 }
 
-h1.table-header {
+h1.table-header, h1.product-title {
     padding-bottom: 30px;
 }
 
 .container-fluid {
     width: 80%;
 }
+
+.attribute {
+    font-weight: bold;
+}
+
+div.attribute > span {
+    padding-left: 1em;
+    font-weight: normal;
+}
+
+.object-operations {
+    margin-top: 20px;
+}
+
+.object-operations > button {
+    margin: 25px;
+}
+
+/* PRODUCT SPECIFIC STYLING */
+
+.product-title {
+    padding: 10px;
+}
+
+.product-card {
+    padding: 20px;
+}
+
+.product-row {
+    margin: 20px;
+}
+
+/* FOOTER STYLING */
 
 .footer {
     position: fixed;

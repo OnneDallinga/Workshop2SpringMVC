@@ -2,11 +2,46 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Viewing Wine</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
-
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
 </head>
 <body>
-
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="bg-img">
+    <div class="content-container">
+        <div class="container-fluid">
+            <div class="card product-card">
+                <h1 class="product-title" th:text="${wine.name} + ' - ' + ${wine.year}">Name</h1>
+                <div class="row product-row">
+                    <div class="col-4 attribute">ID: <span th:text="${wine.id}"></span></div>
+                    <div class="col-4 attribute">Price: € <span th:text="${wine.price}"></span></div>
+                    <div class="col-4 attribute">Stock: <span th:text="${wine.stockQuantity}"></span></div>
+                </div>
+                <span class="border-top my-3"></span>
+                <div class="row product-row">
+                    <div class="col-4 attribute">Wine classification: <span
+                            th:text="${wine.getClassificationAsName(wine.wineClassification)}"></span></div>
+                    <div class="col-4 attribute">Grape variety: <span th:text="${wine.grapeVariety}"></span></div>
+                    <div class="col-4 attribute">Content (ml): <span th:text="${wine.contentInMl}"></span></div>
+                </div>
+                <span class="border-top my-3"></span>
+                <div class="row product-row">
+                    <div class="col-4 attribute">Country: <span th:text="${wine.countryOfOrigin}"></span></div>
+                    <div class="col-4 attribute">Region: <span th:text="${wine.region}"></span></div>
+                    <div class="col-4 attribute">Alcohol Percentage: <span th:text="${wine.alcoholPercentage}"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 offset-8 object-operations">
+                        <button type="button" class="btn btn-secondary btn-lg">Edit</button>
+                        <button type="button" class="btn btn-danger btn-lg">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
