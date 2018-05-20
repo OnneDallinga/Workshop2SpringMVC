@@ -25,6 +25,10 @@ caption.overview {
     padding-left: 2%;
 }
 
+h1.table-header {
+    padding-bottom: 30px;
+}
+
 .container-fluid {
     width: 80%;
 }
