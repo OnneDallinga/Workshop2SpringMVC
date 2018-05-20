@@ -21,6 +21,10 @@ body {
     height: 100%;
 }
 
+caption.overview {
+    padding-left: 2%;
+}
+
 .container-fluid {
     width: 80%;
 }
