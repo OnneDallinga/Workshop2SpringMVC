@@ -14,7 +14,9 @@ import org.springframework.validation.Errors;
 import lombok.extern.slf4j.Slf4j;
 import wine.configuration.RegistrationForm;
 import wine.domain.Account;
+import wine.domain.Authorities;
 import wine.repositories.AccountRepository;
+import wine.repositories.AuthorityRepository;
 
 @Slf4j
 @Controller
@@ -25,6 +27,8 @@ public class AccountCreationController implements ControllerInterface {
 	private AccountRepository accountRepo;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private AuthorityRepository authorityRepo;
 
 	@GetMapping
 	public String registerForm(Model model) {
@@ -41,6 +45,7 @@ public class AccountCreationController implements ControllerInterface {
 		
 		
 		accountRepo.save(form.toAccount(passwordEncoder));
+		authorityRepo.save(new Authorities(accountRepo.findByUsername(form.getUsername()).getId(), form.getUsername()));
 		return "redirect:/login";
 	}
 }
