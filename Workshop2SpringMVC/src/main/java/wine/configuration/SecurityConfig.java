@@ -51,8 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	  http
 	    .authorizeRequests()
 	    .antMatchers("/login", "/register").permitAll()
-	      .antMatchers("/**") // choose 1 or more pages
-	        .hasRole("admin") // choose the access level for those pages
 	      .and()
 	      .formLogin()
 	        .loginPage("/login") // defines login page

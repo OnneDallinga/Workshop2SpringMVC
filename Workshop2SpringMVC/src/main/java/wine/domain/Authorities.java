@@ -21,12 +21,12 @@ public class Authorities {
 	@NotNull
 	private String username;
 	
-	HashSet<GrantedAuthority> authorities;
+	HashSet<GrantedAuthority> authority;
 
 	
 	public Authorities (long id, String username) {
-	authorities = new HashSet<>();
-	authorities.add(new SimpleGrantedAuthority("USER"));
+		authority = new HashSet<>();
+		authority.add(new SimpleGrantedAuthority("USER"));
 	this.id = id;
 	this.username = username;
 	}
