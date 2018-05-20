@@ -38,7 +38,6 @@ public class LoginController implements ControllerInterface {
 		}
 		catch (Exception e) {	
 		}
-		
 		model.addAttribute("account", new Account());
 		return "login";
 	}
