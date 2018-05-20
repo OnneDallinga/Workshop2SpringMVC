@@ -45,4 +45,8 @@ public class Wine extends Product {
     @NotNull
     private double alcoholPercentage;
 
+    public String getClassificationAsName(WineClassification wC) {
+       String wCAsString = wC.toString();
+       return Character.toUpperCase(wCAsString.charAt(0)) + wCAsString.substring(1).toLowerCase();
+    }
 }
