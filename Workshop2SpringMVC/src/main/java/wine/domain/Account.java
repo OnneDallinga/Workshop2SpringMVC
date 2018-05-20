@@ -41,10 +41,6 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 	@SuppressWarnings("unused")
 	@ColumnDefault("true")
 	private boolean enabled;
-	
-	@Autowired
-	@Transient
-	private AuthorityRepository authorityRepo;
 
 	public Account(String username, String password) {
 		this.username = username;
@@ -52,7 +48,6 @@ public class Account extends BaseEntity<Long> implements UserDetails {
 		this.createdOn = new Date();
 		this.lastModifiedOn = createdOn;
 		this.enabled = true;
-		authorityRepo.save(new Authorities(this.id, username));
 	}
 
 	public Account() {
