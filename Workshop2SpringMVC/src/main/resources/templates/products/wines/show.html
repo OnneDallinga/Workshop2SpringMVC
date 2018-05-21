@@ -37,13 +37,21 @@
                     <div class="col-8 attribute">Description
                         <p class="product-description" th:text="${wine.description}">Blablabla</p>
                     </div>
-                    <div class="col-4 attribute">Added On: <span class="create-update" th:text="${#dates.format(wine.createdOn, 'dd-MM-yyyy - HH:mm:ss')}"></span>
-                        Last Modified: <span class="create-update" th:text="${#dates.format(wine.lastModifiedOn, 'dd-MM-yyyy - HH:mm:ss')}"></span></div>
+                    <div class="col-4 attribute">Added On: <span class="create-update"
+                                                                 th:text="${#dates.format(wine.createdOn, 'dd-MM-yyyy - HH:mm:ss')}"></span>
+                        <br>
+                        Last Modified: <span class="create-update"
+                                             th:text="${#dates.format(wine.lastModifiedOn, 'dd-MM-yyyy - HH:mm:ss')}"></span>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12 offset-8 object-operations">
-                        <button type="button" class="btn btn-secondary btn-lg"><a href="#" th:href="@{'/products/wines/' + ${wine.id} + '/edit'}">Edit</a></button>
-                        <button type="button" class="btn btn-danger btn-lg"><a href="#" th:href="@{'/products/wines/' + ${wine.id} + '/delete'}">Delete</a></button>
+                        <button type="button" class="btn btn-secondary btn-lg"><a href="#"
+                                                                                  th:href="@{'/products/wines/' + ${wine.id} + '/edit'}">Edit</a>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-lg"><a href="#"
+                                                                               th:href="@{'/products/wines/' + ${wine.id} + '/delete'}">Delete</a>
+                        </button>
                     </div>
                 </div>
             </div>
