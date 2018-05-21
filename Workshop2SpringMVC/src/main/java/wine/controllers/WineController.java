@@ -32,7 +32,7 @@ public class WineController {
         return "products/wines/wineform";
     }
 
-    @GetMapping("/{id}/edit")
+    @GetMapping("products/wines/{id}/edit")
     public String updateWine(@PathVariable Long id, Model model) {
         model.addAttribute("wine", wineService.findWineById(id));
         return "products/wines/wineform";

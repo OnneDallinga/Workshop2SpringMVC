@@ -15,7 +15,10 @@
             <div class="card product-card">
                 <h2>Please enter product details below</h2>
                 <form class="product-entry" th:object="${wine}" th:action="@{/wine/}" method="post">
-
+                    <!-- id field is hidden because we do not want any edits on it -->
+                    <!-- the id value must be passed here to avoid creating new objects -->
+                    <!-- THIS IS CURRENTLY RETURNIGN NULL FOR SOME UNGODLY REASON -->
+                    <input type="hidden" class="form-control" th:field="*{id}"/>
                     <div class="form-row">
                         <div class="col-6">
                             <label>Name</label>
