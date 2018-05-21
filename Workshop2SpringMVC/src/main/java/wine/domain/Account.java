@@ -13,6 +13,7 @@ import lombok.EqualsAndHashCode;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,6 +27,7 @@ import wine.utility.BaseEntity;
 // @RequiredArgsConstructor
 // @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true) > volgens
 // geeft dit een comp error omdat er een final field is (serialVersionUID)
+@PreAuthorize("hasRole('user')")
 public class Account extends BaseEntity<Long> implements UserDetails {
 
 	private static final long serialVersionUID = 1L;

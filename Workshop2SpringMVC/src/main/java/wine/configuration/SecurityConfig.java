@@ -50,15 +50,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 	  http
 	    .authorizeRequests()
-	    .antMatchers("/login", "/register").permitAll()
-	      .and()
-	      .formLogin()
+	    	.antMatchers("/register").permitAll()
+	    	.anyRequest().authenticated()
+	    	.and()
+	    .formLogin()
 	        .loginPage("/login") // defines login page
 	        .defaultSuccessUrl("/home", true) // defines where user is forced to go after logging in (true)
-	      .and()
+	        .permitAll()
+	        .and()
 	        .logout()
-	          .logoutSuccessUrl("/") // logout page
-	        
+	        	.logoutUrl("/logout")
+	        	.logoutSuccessUrl("/login") // logout page                             
+				.invalidateHttpSession(true)
 	        ;
 	}
 }

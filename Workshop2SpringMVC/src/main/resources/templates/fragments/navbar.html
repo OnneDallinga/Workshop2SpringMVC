@@ -10,6 +10,9 @@
         <a class="p-2 text-dark" th:href="@{/products/wines/all}">Wines</a>
         <a class="p-2 text-dark" href="about.html">About</a>
         <a class="p-2 text-dark" href="contact.html">Contact</a>
+        <form method="POST" th:action="@{/logout}">
+  			<input type="submit" value="Logout"/>
+		</form>
     </nav>
     <a class="btn btn-outline-secondary" th:href="@{/customer}">Your account</a>
 </nav>
