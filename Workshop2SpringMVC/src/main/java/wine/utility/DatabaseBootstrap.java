@@ -48,13 +48,13 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         wineRepo.saveAll(getWines());
- /*     accountRepo.saveAll(getAccounts());
+        accountRepo.saveAll(getAccounts());
+        addressRepo.saveAll(getAddresses());
         customerRepo.saveAll(getCustomers());
-        addressRepo.saveAll(getAddresses(setCustomersForAddresses()));*/
         log.debug("Loading Bootstrap Data");
     }
 
-/*    private List<Account> getAccounts() {
+    private List<Account> getAccounts() {
         List<Account> accounts = new ArrayList<>();
         Account accountForCustomer1 = new Account("jantjepantje",
                                             passwordEncoder.encode("hoiikbenjantje"));
@@ -66,15 +66,51 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         return accounts;
     }
 
+    private List<Address> getAddresses() {
+        List<Address> addresses = new ArrayList<>();
+        Address deliveryAddressForCustomer1 = new Address();
+        deliveryAddressForCustomer1.setAddressType(Address.AddressType.DELIVERY);
+        deliveryAddressForCustomer1.setPostalCode("1111AA");
+        deliveryAddressForCustomer1.setHouseNumber(84);
+        deliveryAddressForCustomer1.setStreet("Jengelplein");
+        deliveryAddressForCustomer1.setCity("Volendam");
+        addresses.add(deliveryAddressForCustomer1);
+
+        Address deliveryAddressForCustomer2 = new Address();
+        deliveryAddressForCustomer1.setAddressType(Address.AddressType.DELIVERY);
+        deliveryAddressForCustomer1.setPostalCode("8888ZA");
+        deliveryAddressForCustomer1.setHouseNumber(2);
+        deliveryAddressForCustomer1.setStreet("J.F. Kennedylaan");
+        deliveryAddressForCustomer1.setCity("Weesp");
+        addresses.add(deliveryAddressForCustomer2);
+
+        Address billingAddressForCustomer2 = new Address();
+        deliveryAddressForCustomer1.setAddressType(Address.AddressType.BILLING);
+        deliveryAddressForCustomer1.setPostalCode("2717KL");
+        deliveryAddressForCustomer1.setHouseNumber(2);
+        deliveryAddressForCustomer1.setStreet("Groot Haesebroekseweg");
+        deliveryAddressForCustomer1.setCity("Wassenaar");
+        addresses.add(billingAddressForCustomer2);
+
+        return addresses;
+    }
+
     private List<Customer> getCustomers() {
         List<Customer> customers = new ArrayList<>();
-
+        List<Address> customerList = (List<Address>)addressRepo.findAll();
+        List<Address> customer1Addresses = new ArrayList<>();
+        customer1Addresses.add(customerList.get(0));
+        List<Address> customer2Addresses = new ArrayList<>();
+        customer2Addresses.add(customerList.get(1));
+        customer2Addresses.add(customerList.get(2));
+        
         Customer customer1 = new Customer();
         customer1.setAccount(accountRepo.findByUsername("jantjepantje"));
         customer1.setFirstName("Jantje");
         customer1.setLastName("Smit");
         customer1.setEmail("jantje@gmail.com");
         customer1.setPhoneNumber("0677332211");
+        customer1.setAddressesOfCustomer(customer1Addresses);
         customers.add(customer1);
 
         Customer customer2 = new Customer();
@@ -84,51 +120,11 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         customer2.setLastNamePreposition("van den");
         customer2.setEmail("bertrandowntalles@hotmail.com");
         customer2.setPhoneNumber("02044556611");
+        customer1.setAddressesOfCustomer(customer2Addresses);
         customers.add(customer2);
 
         return customers;
     }
-
-    private List<Customer> setCustomersForAddresses() {
-        List<Customer> customersForAddresses = new ArrayList<>();
-        Optional<Customer> customer1 = customerRepo.findById(1L);
-        Optional<Customer> customer2 = customerRepo.findById(2L);
-        customersForAddresses.add(customer1.get());
-        customersForAddresses.add(customer2.get());
-        return customersForAddresses;
-    }
-
-    private List<Address> getAddresses(List<Customer> customers) {
-        List<Address> addresses = new ArrayList<>();
-        Address deliveryAddressForCustomer1 = new Address();
-        deliveryAddressForCustomer1.setCustomer(customers.get(0));
-        deliveryAddressForCustomer1.setAddressType(Address.AddressType.DELIVERY);
-        deliveryAddressForCustomer1.setPostalCode("1111AA");
-        deliveryAddressForCustomer1.setHouseNumber(84);
-        deliveryAddressForCustomer1.setStreet("Jengelplein");
-        deliveryAddressForCustomer1.setCity("Volendam");
-        addresses.add(deliveryAddressForCustomer1);
-
-        Address deliveryAddressForCustomer2 = new Address();
-        deliveryAddressForCustomer2.setCustomer(customers.get(1));
-        deliveryAddressForCustomer1.setAddressType(Address.AddressType.DELIVERY);
-        deliveryAddressForCustomer1.setPostalCode("8888ZA");
-        deliveryAddressForCustomer1.setHouseNumber(2);
-        deliveryAddressForCustomer1.setStreet("J.F. Kennedylaan");
-        deliveryAddressForCustomer1.setCity("Weesp");
-        addresses.add(deliveryAddressForCustomer2);
-
-        Address billingAddressForCustomer2 = new Address();
-        deliveryAddressForCustomer2.setCustomer(customers.get(1));
-        deliveryAddressForCustomer1.setAddressType(Address.AddressType.BILLING);
-        deliveryAddressForCustomer1.setPostalCode("2717KL");
-        deliveryAddressForCustomer1.setHouseNumber(2);
-        deliveryAddressForCustomer1.setStreet("Groot Haesebroekseweg");
-        deliveryAddressForCustomer1.setCity("Wassenaar");
-        addresses.add(billingAddressForCustomer2);
-
-        return addresses;
-    }*/
 
     private List<Wine> getWines() {
         List<Wine> wines = new ArrayList<>();
