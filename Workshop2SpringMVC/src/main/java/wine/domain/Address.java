@@ -23,7 +23,6 @@ public class Address extends BaseEntity<Long> {
 
     private String street;
 
-    @Positive
     private int houseNumber;
 
     private String houseNumberAddition;
