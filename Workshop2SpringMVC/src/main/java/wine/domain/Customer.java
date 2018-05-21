@@ -106,7 +106,7 @@ public class Customer extends BaseEntity<Long> {
         if(getLastNamePreposition() != null) {
             lastNamePrep = getLastNamePreposition();
         }
-        String fullName = lastNamePrep + getLastName() + ", " + getFirstName();
+        String fullName = lastNamePrep + " " + getLastName() + ", " + getFirstName();
         return fullName;
     }
 }

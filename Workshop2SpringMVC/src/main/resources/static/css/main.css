@@ -94,6 +94,12 @@ p.product-description {
     font-weight: normal;
 }
 
+/* NAVBAR STYLING */
+
+form#logout-button {
+    padding-right: 20px;
+}
+
 /* FOOTER STYLING */
 
 .footer {
