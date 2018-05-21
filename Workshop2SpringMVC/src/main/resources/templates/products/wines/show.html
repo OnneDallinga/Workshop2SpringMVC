@@ -15,13 +15,13 @@
                 <h1 class="product-title" th:text="${wine.name} + ' - ' + ${wine.year}">Name</h1>
                 <div class="row product-row">
                     <div class="col-4 attribute">ID: <span th:text="${wine.id}"></span></div>
-                    <div class="col-4 attribute">Price: € <span th:text="${wine.price}"></span></div>
+                    <div class="col-4 attribute">Price: <span th:text="' €' + ${wine.price}"></span></div>
                     <div class="col-4 attribute">Stock: <span th:text="${wine.stockQuantity}"></span></div>
                 </div>
                 <span class="border-top my-3"></span>
                 <div class="row product-row">
                     <div class="col-4 attribute">Wine classification: <span
-                            th:text="${wine.getClassificationAsName(wine.wineClassification)}"></span></div>
+                            th:text="${wine.wineClassification.displayName}"></span></div>
                     <div class="col-4 attribute">Grape variety: <span th:text="${wine.grapeVariety}"></span></div>
                     <div class="col-4 attribute">Content (ml): <span th:text="${wine.contentInMl}"></span></div>
                 </div>
@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-12 offset-8 object-operations">
                         <button type="button" class="btn btn-secondary btn-lg"><a href="#" th:href="@{'/products/wines/' + ${wine.id} + '/edit'}">Edit</a></button>
-                        <button type="button" class="btn btn-danger btn-lg"><a href="#" th:href="@{'/proudcts/wines/' + ${wine.id} + '/delete'}">Delete</a></button>
+                        <button type="button" class="btn btn-danger btn-lg"><a href="#" th:href="@{'/products/wines/' + ${wine.id} + '/delete'}">Delete</a></button>
                     </div>
                 </div>
             </div>

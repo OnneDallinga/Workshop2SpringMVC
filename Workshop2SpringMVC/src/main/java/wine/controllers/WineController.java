@@ -7,7 +7,6 @@ import wine.domain.Wine;
 import wine.services.WineService;
 
 @Controller
-@RequestMapping("/products/wines")
 public class WineController {
 
     private final WineService wineService;
@@ -16,19 +15,19 @@ public class WineController {
         this.wineService = wineService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/products/wines/all")
     public String listWines(Model model) {
         model.addAttribute("wines", wineService.findAllWines());
         return "products/wines/wines";
     }
 
-    @GetMapping("/{id}/show")
+    @GetMapping("/products/wines/{id}/show")
     public String showWineById(@PathVariable Long id, Model model) {
         model.addAttribute("wine", wineService.findWineById(id));
         return "products/wines/show";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/products/wines/new")
     public String newWine(@ModelAttribute Wine wine) {
         return "products/wines/wineform";
     }
@@ -45,7 +44,7 @@ public class WineController {
         return "redirect:/products/wines/" + wine.getId() + "/show";
     }
 
-    @GetMapping("/{id}/delete")
+    @GetMapping("/products/wines/{id}/delete")
     public String deleteWineById(@PathVariable Long id) {
         wineService.deleteById(id);
         return "redirect:/products/wines";

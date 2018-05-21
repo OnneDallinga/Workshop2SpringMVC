@@ -1,10 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add New Wine</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="bg-img">
+    <div class="content-container">
+        <div class="container-fluid">
+            <div class="card product-card">
+                <h2>Please enter product details below</h2>
+                <form class="product-entry" th:object="${wine}" th:action="@{/wine/}" method="post">
 
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label>Name</label>
+                            <input type="text" class="form-control" th:field="*{name}" placeholder="">
+                        </div>
+                        <div class="col">
+                            <label>Year</label>
+                            <input type="text" class="form-control" th:field="*{year}" placeholder="">
+                        </div>
+                        <div class="col">
+                            <label>Price</label>
+                            <input type="text" class="form-control" th:field="*{price}" placeholder="e.g. 14.2">
+                        </div>
+                        <div class="col">
+                            <label>Stock Quantity</label>
+                            <input type="text" class="form-control" th:field="*{stockQuantity}" placeholder="Stock #">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-2">
+                            <label>Classification</label>
+                            <select class="form-control" th:field="*{wineClassification}">
+                                <!-- ignore the errors here, code is correct and compiles, silly ThymeLeaf -->
+                                <option th:each="wineClassification : ${T(wine.domain.Wine.WineClassification).values()}"
+                                        th:value="${wineClassification}"
+                                        th:text="${wineClassification.displayName}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label>Grape variety</label>
+                            <input type="text" class="form-control" th:field="*{grapeVariety}"
+                                   placeholder="e.g. Shiraz">
+                        </div>
+                        <div class="col-3">
+                            <label>Content</label>
+                            <input type="text" class="form-control" th:field="*{contentInMl}"
+                                   placeholder="Measured in ml">
+                        </div>
+                        <div class="col-3">
+                            <label>Alcohol percentage</label>
+                            <input type="text" class="form-control" th:field="*{alcoholPercentage}"
+                                   placeholder="Enter with decimal, no % character.">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label>Country</label>
+                            <input type="text" class="form-control" th:field="*{countryOfOrigin}" placeholder="">
+                        </div>
+                        <div class="col-6">
+                            <label>Region</label>
+                            <input type="text" class="form-control" th:field="*{region}" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-12">
+                            <label>Description</label>
+                            <input type="text" class="form-control" th:field="*{description}"
+                                   placeholder="Marcus et Cornelia ambulabant. Cornelia subito serpentem videt.">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 offset-10 object-operations">
+                            <input class="btn btn-primary btn-lg" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

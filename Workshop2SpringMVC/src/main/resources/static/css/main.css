@@ -50,9 +50,17 @@ div.attribute > span {
     margin: 25px;
 }
 
-button > a {
+.object-operations > button > a {
     text-decoration: inherit;
     color: inherit;
+}
+
+.object-operations > button.add-button {
+    margin-top: -40px;
+}
+
+.object-operations > input[type="submit"] {
+    margin-bottom: 30px;
 }
 
 .overview-card {
@@ -60,6 +68,10 @@ button > a {
 }
 
 /* PRODUCT SPECIFIC STYLING */
+
+form.product-entry > div.form-row {
+    padding: 20px;
+}
 
 .product-title {
     padding: 10px;
