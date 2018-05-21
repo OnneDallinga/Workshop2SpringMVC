@@ -11,9 +11,6 @@ import java.util.Set;
 
 public interface AddressRepository extends CrudRepository<Address, Long> {
 
-    @Query("FROM Address a JOIN a.customer c WHERE c.id=customerId")
-    Iterable<Address> findAddressesByCustomerId(@Param("customerId") Long customerId);
-
     @Query("FROM Address a WHERE a.postalCode=postalCode")
     Optional<Address> findAddressByPostalCode(@Param("postalCode") String postalCode);
 

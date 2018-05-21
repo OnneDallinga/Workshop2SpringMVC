@@ -45,12 +45,6 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Address> findAllAddressesByCustomerId(Long customerId) {
-        return addressRepo.findAddressesByCustomerId(customerId);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public Address findAddressByPostalCode(String postalCode) {
         Optional<Address> addressOptional = addressRepo.findAddressByPostalCode(postalCode);
         if(!addressOptional.isPresent()) {
