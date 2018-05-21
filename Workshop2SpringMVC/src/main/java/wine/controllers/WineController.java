@@ -47,7 +47,7 @@ public class WineController {
     @GetMapping("/products/wines/{id}/delete")
     public String deleteWineById(@PathVariable Long id) {
         wineService.deleteById(id);
-        return "redirect:/products/wines";
+        return "redirect:/products/wines/all";
     }
 
 }
