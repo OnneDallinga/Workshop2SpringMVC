@@ -50,6 +50,11 @@ div.attribute > span {
     margin: 25px;
 }
 
+.object-operations > button > a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
 /* PRODUCT SPECIFIC STYLING */
 
 .product-title {
