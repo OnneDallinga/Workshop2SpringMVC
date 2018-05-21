@@ -6,6 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
@@ -22,13 +23,10 @@ public abstract class BaseEntity<ID> implements Serializable {
     protected ID id;
 
     @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_on", nullable = false)
+    @Column(nullable = false, updatable = false)
     protected Date createdOn;
 
     @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "last_modified_on")
     protected Date lastModifiedOn;
 
     @PrePersist
@@ -37,7 +35,7 @@ public abstract class BaseEntity<ID> implements Serializable {
     }
 
     @PreUpdate
-    public void setModificationDate() {
+    public void setLastUpdated() {
         this.lastModifiedOn = new Date();
     }
 

@@ -18,6 +18,7 @@ import wine.repositories.WineRepository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,7 +48,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         wineRepo.saveAll(getWines());
- /*       accountRepo.saveAll(getAccounts());
+ /*     accountRepo.saveAll(getAccounts());
         customerRepo.saveAll(getCustomers());
         addressRepo.saveAll(getAddresses(setCustomersForAddresses()));*/
         log.debug("Loading Bootstrap Data");
@@ -133,6 +134,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         List<Wine> wines = new ArrayList<>();
 
         Wine wine1 = new Wine();
+        wine1.setCreationDate();
         wine1.setName("Campo Viejo Reserva");
         wine1.setPrice(new BigDecimal("7.49"));
         wine1.setStockQuantity(47);
@@ -147,6 +149,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         wines.add(wine1);
 
         Wine wine2 = new Wine();
+        wine1.setCreationDate();
         wine2.setName("Inycon Estate Viognier");
         wine2.setPrice(new BigDecimal("10.59"));
         wine2.setStockQuantity(28);
@@ -161,6 +164,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         wines.add(wine2);
 
         Wine wine3 = new Wine();
+        wine1.setCreationDate();
         wine3.setName("Arrogant Frog Rosé");
         wine3.setPrice(new BigDecimal("7.19"));
         wine3.setStockQuantity(9);
@@ -175,6 +179,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         wines.add(wine3);
 
         Wine wine4 = new Wine();
+        wine1.setCreationDate();
         wine4.setName("Dom Perignon Magnum Champagne");
         wine4.setPrice(new BigDecimal("844"));
         wine4.setStockQuantity(1);
