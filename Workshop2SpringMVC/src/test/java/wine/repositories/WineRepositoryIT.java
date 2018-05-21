@@ -14,9 +14,9 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class ProductRepositoryIT {
+public class WineRepositoryIT {
 
-    // Doesn't pass yet due to create-drop Hibernate
+    // Doesn't pass due to no internal db set
 
     @Autowired
     WineRepository wineRepository;

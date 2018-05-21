@@ -46,7 +46,7 @@ public class WineControllerTest {
 
         mockMvc.perform(get("/products/wines/new"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/products/wines/wineform"))
+                .andExpect(view().name("products/wines/wineform"))
                 .andExpect(model().attributeExists("wine"));
     }
 
@@ -57,10 +57,9 @@ public class WineControllerTest {
 
         when(wineService.save(any())).thenReturn(wine);
 
-        mockMvc.perform(post("/products/wines")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("id","")
-                .param("description","stuff goes here")
+        mockMvc.perform(post("/wine")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED) 
+                .param("id","1")
         )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/products/wines/1/show"));
@@ -86,17 +85,17 @@ public class WineControllerTest {
 
         when(wineService.findWineById(anyLong())).thenReturn(wine);
 
-        mockMvc.perform(get("/products/wines/1/update"))
+        mockMvc.perform(get("/products/wines/1/edit"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("products/wines/wineform"))
-                .andExpect(model().attributeExists("product"));
+                .andExpect(model().attributeExists("wine"));
     }
 
     @Test
     public void deleteWineTest() throws Exception {
-        mockMvc.perform(delete("/products/wines/1/delete"))
+        mockMvc.perform(get("/products/wines/1/delete"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/products/wines"));
+                .andExpect(view().name("redirect:/products/wines/all"));
 
         verify(wineService, times(1)).deleteById(anyLong());
     }
