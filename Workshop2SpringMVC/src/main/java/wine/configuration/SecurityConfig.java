@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/images/**");
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/images/**", "/webjars/**");
     }
 
 	@Override
@@ -60,7 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
               .anonymous().and()
 	             .	authorizeRequests()
 	    	        .antMatchers("/register").permitAll()
-			        .antMatchers("/webjars/**").permitAll()
 			        .anyRequest().authenticated()
               .and()
 	    .formLogin()
