@@ -30,7 +30,9 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
     }
 
     private List<Wine> getWines() {
-        List<Wine> wines = new ArrayList<>(2);
+        //TODO info wel even opleuken
+
+        List<Wine> wines = new ArrayList<>();
         
         Wine wine1 = new Wine();
         wine1.setName("Topwijn");

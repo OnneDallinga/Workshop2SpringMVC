@@ -73,6 +73,11 @@ button > a {
     margin: 20px;
 }
 
+p.product-description {
+    padding-top: 20px;
+    font-weight: normal;
+}
+
 /* FOOTER STYLING */
 
 .footer {
