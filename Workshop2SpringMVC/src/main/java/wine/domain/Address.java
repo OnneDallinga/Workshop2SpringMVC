@@ -28,8 +28,8 @@ public class Address extends BaseEntity<Long> {
 
     private String houseNumberAddition;
 
-    @Pattern(regexp="^[0-9]{4}\\\\s*[a-zA-Z]{2}$",
-             message="Strictly following format is accepted: 1991AA. Please leave out spaces.")
+    @Pattern(regexp="^[1-9][0-9]{3}[\\s]?[A-Za-z]{2}$",
+             message="Formats accepted: 1111AA, 1111 AA.")
     private String postalCode;
 
     private String city;
