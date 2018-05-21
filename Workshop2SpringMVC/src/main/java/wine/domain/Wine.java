@@ -15,13 +15,23 @@ public class Wine extends Product {
      *  restricted inputs in the web application via e.g. dropdown selection. This aids with
      *  repositories integrity and controlling valid user input. */
 
-    public enum WineClassification {
-        RED,
-        WHITE,
-        ROSE,
-        SPARKLING,
-        DESSERT,
-        FORTIFIED
+    public static enum WineClassification {
+        RED("Red"),
+        WHITE("White"),
+        ROSE("Rose"),
+        SPARKLING("Sparkling"),
+        DESSERT("Dessert"),
+        FORTIFIED("Fortified");
+
+        private final String displayName;
+
+        WineClassification(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
     }
 
     private WineClassification wineClassification;
@@ -45,8 +55,4 @@ public class Wine extends Product {
     @NotNull
     private double alcoholPercentage;
 
-    public String getClassificationAsName(WineClassification wC) {
-       String wCAsString = wC.toString();
-       return Character.toUpperCase(wCAsString.charAt(0)) + wCAsString.substring(1).toLowerCase();
-    }
 }
