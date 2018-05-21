@@ -18,9 +18,6 @@ public class Address extends BaseEntity<Long> {
         DELIVERY
     }
 
-    @ManyToOne(optional = false)
-    private Customer customer;
-
     private String street;
 
     private int houseNumber;

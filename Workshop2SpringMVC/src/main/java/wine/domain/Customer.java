@@ -32,11 +32,8 @@ public class Customer extends BaseEntity<Long> {
     private String phoneNumber;
     
 
-    @OneToMany(mappedBy = "customer",
-            fetch = FetchType.EAGER,
+    @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @Column(nullable = false)
     private List<Address> addressesOfCustomer;
 
     @OneToMany(mappedBy = "customer",
