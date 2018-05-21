@@ -11,7 +11,7 @@
 <div th:replace="fragments/navbar :: navbar"></div>
 <div class="bg-img">
     <div class="content-container">
-        <h1 align="center" class="table-header">List of wines</h1>
+        <h1 align="center" class="table-header">Wine Inventory</h1>
         <div th:if="${#lists.isEmpty(wines)}">
             <h2 align="center"><a href="/products/wines/new">You can't see that which does not exist. Please add wines
                 first!</a></h2>
@@ -40,6 +40,11 @@
                         </tr>
                         </tbody>
                     </table>
+                    <div class="row">
+                        <div class="col-12 offset-10">
+                            <button type="button" class="btn btn-primary"><a href="#" th:href="@{/products/wines/new}">Add New</a></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

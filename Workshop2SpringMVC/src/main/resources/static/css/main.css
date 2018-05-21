@@ -50,7 +50,7 @@ div.attribute > span {
     margin: 25px;
 }
 
-.object-operations > button > a {
+button > a {
     text-decoration: inherit;
     color: inherit;
 }
