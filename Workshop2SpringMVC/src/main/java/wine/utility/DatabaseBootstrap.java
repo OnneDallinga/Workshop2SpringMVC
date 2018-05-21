@@ -1,8 +1,10 @@
 package wine.utility;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import wine.domain.Account;
@@ -22,12 +24,14 @@ import java.util.Optional;
 @Component
 public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(DatabaseBootstrap.class);
     private final WineRepository wineRepo;
     private final AccountRepository accountRepo;
     private final CustomerRepository customerRepo;
     private final AddressRepository addressRepo;
-
 
     public DatabaseBootstrap(WineRepository wineRepo,
                              AccountRepository accountRepo,
@@ -43,18 +47,20 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         wineRepo.saveAll(getWines());
-        accountRepo.saveAll(getAccounts());
+ /*       accountRepo.saveAll(getAccounts());
         customerRepo.saveAll(getCustomers());
-        addressRepo.saveAll(getAddresses(setCustomersForAddresses()));
+        addressRepo.saveAll(getAddresses(setCustomersForAddresses()));*/
         log.debug("Loading Bootstrap Data");
     }
 
-    private List<Account> getAccounts() {
+/*    private List<Account> getAccounts() {
         List<Account> accounts = new ArrayList<>();
-        Account accountForCustomer1 = new Account("jantjepantje", "hoiikbenjantje");
+        Account accountForCustomer1 = new Account("jantjepantje",
+                                            passwordEncoder.encode("hoiikbenjantje"));
         accounts.add(accountForCustomer1);
 
-        Account accountForCustomer2 = new Account("bertrandschmertrand","hoiikbenbertrand");
+        Account accountForCustomer2 = new Account("bertrandschmertrand",
+                                            passwordEncoder.encode("hoiikbenbertrand"));
         accounts.add(accountForCustomer2);
         return accounts;
     }
@@ -71,12 +77,12 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         customers.add(customer1);
 
         Customer customer2 = new Customer();
-        customer1.setAccount(accountRepo.findByUsername("bertrandschmertrand"));
-        customer1.setFirstName("Bertrand");
-        customer1.setLastName("Dolder-Henegouwen");
-        customer1.setLastNamePreposition("van den");
-        customer1.setEmail("bertrandowntalles@hotmail.com");
-        customer1.setPhoneNumber("02044556611");
+        customer2.setAccount(accountRepo.findByUsername("bertrandschmertrand"));
+        customer2.setFirstName("Bertrand");
+        customer2.setLastName("Dolder-Henegouwen");
+        customer2.setLastNamePreposition("van den");
+        customer2.setEmail("bertrandowntalles@hotmail.com");
+        customer2.setPhoneNumber("02044556611");
         customers.add(customer2);
 
         return customers;
@@ -121,11 +127,11 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         addresses.add(billingAddressForCustomer2);
 
         return addresses;
-    }
+    }*/
 
     private List<Wine> getWines() {
         List<Wine> wines = new ArrayList<>();
-        
+
         Wine wine1 = new Wine();
         wine1.setName("Campo Viejo Reserva");
         wine1.setPrice(new BigDecimal("7.49"));
@@ -139,7 +145,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         wine1.setYear(2015);
         wine1.setAlcoholPercentage(13.5);
         wines.add(wine1);
-        
+
         Wine wine2 = new Wine();
         wine2.setName("Inycon Estate Viognier");
         wine2.setPrice(new BigDecimal("10.59"));
@@ -181,7 +187,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         wine4.setYear(2003);
         wine4.setAlcoholPercentage(12.5);
         wines.add(wine4);
-        
+
         return wines;
     }
 }
