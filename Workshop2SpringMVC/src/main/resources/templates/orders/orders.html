@@ -12,12 +12,12 @@
 <div class="bg-img">
     <div class="content-container">
         <h1 align="center" class="table-header">Orders</h1>
-        <div th:if="${#lists.isEmpty(orders)}">
-            <h2 align="center"><a href="/orders/new">You can't see that which does not exist. Please add an order
-                first!</a></h2>
-        </div>
         <div class="container-fluid">
             <div class="card overview-card">
+                <div th:if="${#lists.isEmpty(orders)}">
+                    <h2 align="center"><a href="/orders/new">You can't see that which does not exist. Please add an order
+                        first!</a></h2>
+                </div>
                 <div class="table-responsive" th:if="${not #lists.isEmpty(orders)}">
                     <table class="table table-striped table-hover">
                         <caption class="overview">List of filed orders</caption>
@@ -34,7 +34,7 @@
                         <tbody>
                         <tr th:each="order : ${orders}">
                             <td th:text="${order.id}">123</td>
-                            <td th:text="${order.customer.nameToString()}">Honhonhon</td>
+                            <td th:text="${order.customer.fullName}">Honhonhon</td>
                             <td th:text="${order.orderPriceTotal}">40</td>
                             <td th:text="${order.orderItemsTotal}">123</td>
                             <td th:text="${order.createdOn}">June 7</td>
