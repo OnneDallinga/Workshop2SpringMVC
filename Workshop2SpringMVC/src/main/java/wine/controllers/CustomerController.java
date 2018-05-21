@@ -29,6 +29,12 @@ public class CustomerController {
 	@Autowired
 	private AccountRepository accountRepo;
 
+	@GetMapping("/customers/all")
+	public String listCustomers(Model model) {
+		model.addAttribute("customers", customerRepo.findAll());
+		return "customers/customers";
+	}
+
 	@GetMapping("/customer")
 	public String registerForm(Model model, Principal principal) {
 		Account account = accountRepo.findByUsername(principal.getName());

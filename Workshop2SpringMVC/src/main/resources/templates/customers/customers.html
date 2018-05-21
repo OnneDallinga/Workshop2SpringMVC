@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Overview</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="bg-img">
+    <div class="content-container">
+        <h1 align="center" class="table-header">Customers</h1>
+        <div th:if="${#lists.isEmpty(customers)}">
+            <h2 align="center"><a href="/customers/newcustomer">You can't see that which does not exist. Please add a
+                customer
+                first!</a></h2>
+        </div>
+        <div class="container-fluid">
+            <div class="card overview-card">
+                <div class="table-responsive" th:if="${not #lists.isEmpty(customers)}">
+                    <table class="table table-striped table-hover">
+                        <caption class="overview">List of current customer relations</caption>
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone Number</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="customer : ${customers}">
+                            <td th:text="${customer.id}">123</td>
+                            <td th:text="${customer.getFullName()}">Honhonhon</td>
+                            <td th:text="${customer.email}">40</td>
+                            <td th:text="${customer.phoneNumber}">123</td>
+                            <td><a href="#" th:href="@{${customer.id} + '/show'}">View</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-12 offset-10 object-operations">
+                            <button type="button" class="btn btn-primary add-button"><a href="#"
+                                                                                        th:href="@{/customer}">Add
+                                New</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

@@ -100,4 +100,13 @@ public class Customer extends BaseEntity<Long> {
     public void setPhoneNumber(String phoneNumber) {
     	this.phoneNumber = phoneNumber;
     }
+
+    public String getFullName() {
+        String lastNamePrep = "";
+        if(getLastNamePreposition() != null) {
+            lastNamePrep = getLastNamePreposition();
+        }
+        String fullName = lastNamePrep + getLastName() + ", " + getFirstName();
+        return fullName;
+    }
 }
