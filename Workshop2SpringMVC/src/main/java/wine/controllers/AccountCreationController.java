@@ -42,8 +42,6 @@ public class AccountCreationController implements ControllerInterface {
 		if (errors.hasErrors()) {
 			return "register";
 		}
-		System.out.println(form.toString());
-		
 		accountRepo.save(form.toAccount(passwordEncoder));
 		authorityRepo.save(new Authorities(accountRepo.findByUsername(form.getUsername()).getId(), form.getUsername()));
 		return "redirect:/login";
