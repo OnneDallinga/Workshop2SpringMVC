@@ -96,7 +96,15 @@ p.product-description {
 
 /* CUSTOMER SPECIFIC STYLING */
 
+div.address-container {
+    padding: 25px;
+    border: none;
+}
 
+div#address-view {
+    position: absolute;
+    right: 0;
+}
 
 /* NAVBAR STYLING */
 

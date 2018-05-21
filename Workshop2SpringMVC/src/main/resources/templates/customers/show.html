@@ -21,18 +21,31 @@
                 <span class="border-top my-3"></span>
                 <div class="row product-row">
                     <div class="col-4 attribute">First Name: <span th:text="${customer.firstName}"></span></div>
-                    <div class="col-4 attribute">Prefix: <span th:text="${customer.lastNamePreposition}?: '(no prefix specified)'">n/a</span></div>
+                    <div class="col-4 attribute">Prefix: <span
+                            th:text="${customer.lastNamePreposition}?: '(no prefix specified)'">n/a</span></div>
                     <div class="col-4 attribute">Last Name: <span th:text="${customer.lastName}"></span></div>
                 </div>
                 <span class="border-top my-3"></span>
                 <div class="row product-row">
                     <h4 id="address-header">Known Addresses</h4>
+                </div>
+                <div class="container address-container" th:each="address: ${customer.addressesOfCustomer}">
+                    <div class="row">
+                        <div class="col-4 attribute">Street: <span th:text="${address.street}"></span></div>
+                        <div class="col-2 attribute">House number: <span
+                                th:text="${address.houseNumber} + ' ' + ${address.houseNumberAddition != null ?address.houseNumberAddition : ''}">n/a</span>
+                        </div>
+                        <div class="col-2 attribute">Postal code: <span th:text="${address.postalCode}"></span></div>
+                        <div class="col-2 attribute">Type: <span th:text="${address.addressType.displayName}"></span>
+                        </div>
+                        <div class="col-2" id="address-view"><a href="#" th:href="'/addresses/' + @{${address.id} + '/show'}">View</a>
+                        </div>
                     </div>
                 </div>
                 <span class="border-top my-3"></span>
                 <div class="row product-row">
                     <div class="col-4 offset-8 attribute">Added On: <span class="create-update"
-                                                                 th:text="${#dates.format(customer.createdOn, 'dd-MM-yyyy - HH:mm:ss')}"></span>
+                                                                          th:text="${#dates.format(customer.createdOn, 'dd-MM-yyyy - HH:mm:ss')}"></span>
                         <br>
                         Last Modified: <span class="create-update"
                                              th:text="${#dates.format(customer.lastModifiedOn, 'dd-MM-yyyy - HH:mm:ss')}"></span>
@@ -51,6 +64,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
 </body>

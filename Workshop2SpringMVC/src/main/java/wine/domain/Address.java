@@ -14,8 +14,18 @@ import javax.validation.constraints.Positive;
 public class Address extends BaseEntity<Long> {
 
     public enum AddressType {
-        BILLING,
-        DELIVERY
+        BILLING("Billing"),
+        DELIVERY("Delivery");
+
+        private final String displayName;
+
+        AddressType(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
     }
 
     private String street;

@@ -49,7 +49,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
     public void onApplicationEvent(ContextRefreshedEvent event) {
         wineRepo.saveAll(getWines());
         accountRepo.saveAll(getAccounts());
-        addressRepo.saveAll(getAddresses());
+        populateAddresses();
         customerRepo.saveAll(getCustomers());
         log.debug("Loading Bootstrap Data");
     }
@@ -66,43 +66,44 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         return accounts;
     }
 
-    private List<Address> getAddresses() {
-        List<Address> addresses = new ArrayList<>();
+    private void populateAddresses() {
         Address deliveryAddressForCustomer1 = new Address();
         deliveryAddressForCustomer1.setAddressType(Address.AddressType.DELIVERY);
         deliveryAddressForCustomer1.setPostalCode("1111AA");
         deliveryAddressForCustomer1.setHouseNumber(84);
         deliveryAddressForCustomer1.setStreet("Jengelplein");
         deliveryAddressForCustomer1.setCity("Volendam");
-        addresses.add(deliveryAddressForCustomer1);
+        addressRepo.save(deliveryAddressForCustomer1);
 
         Address deliveryAddressForCustomer2 = new Address();
-        deliveryAddressForCustomer1.setAddressType(Address.AddressType.DELIVERY);
-        deliveryAddressForCustomer1.setPostalCode("8888ZA");
-        deliveryAddressForCustomer1.setHouseNumber(2);
-        deliveryAddressForCustomer1.setStreet("J.F. Kennedylaan");
-        deliveryAddressForCustomer1.setCity("Weesp");
-        addresses.add(deliveryAddressForCustomer2);
+        deliveryAddressForCustomer2.setAddressType(Address.AddressType.DELIVERY);
+        deliveryAddressForCustomer2.setPostalCode("8888BA");
+        deliveryAddressForCustomer2.setHouseNumber(2);
+        deliveryAddressForCustomer2.setHouseNumberAddition("A");
+        deliveryAddressForCustomer2.setStreet("J.F. Kennedylaan");
+        deliveryAddressForCustomer2.setCity("Weesp");
+        addressRepo.save(deliveryAddressForCustomer2);
 
         Address billingAddressForCustomer2 = new Address();
-        deliveryAddressForCustomer1.setAddressType(Address.AddressType.BILLING);
-        deliveryAddressForCustomer1.setPostalCode("2717KL");
-        deliveryAddressForCustomer1.setHouseNumber(2);
-        deliveryAddressForCustomer1.setStreet("Groot Haesebroekseweg");
-        deliveryAddressForCustomer1.setCity("Wassenaar");
-        addresses.add(billingAddressForCustomer2);
+        billingAddressForCustomer2.setAddressType(Address.AddressType.BILLING);
+        billingAddressForCustomer2.setPostalCode("2717KL");
+        billingAddressForCustomer2.setHouseNumber(14);
+        billingAddressForCustomer2.setStreet("Groot Haesebroekseweg");
+        billingAddressForCustomer2.setCity("Wassenaar");
+        addressRepo.save(billingAddressForCustomer2);
 
-        return addresses;
     }
 
     private List<Customer> getCustomers() {
-        List<Customer> customers = new ArrayList<>();
-        List<Address> customerList = (List<Address>)addressRepo.findAll();
+
+        List<Address> addressList = (List<Address>)addressRepo.findAll();
         List<Address> customer1Addresses = new ArrayList<>();
-        customer1Addresses.add(customerList.get(0));
+        customer1Addresses.add(0,addressList.get(0));
         List<Address> customer2Addresses = new ArrayList<>();
-        customer2Addresses.add(customerList.get(1));
-        customer2Addresses.add(customerList.get(2));
+        customer2Addresses.add(0, addressList.get(1));
+        customer2Addresses.add(1, addressList.get(2));
+
+        List<Customer> customers = new ArrayList<>();
         
         Customer customer1 = new Customer();
         customer1.setAccount(accountRepo.findByUsername("jantjepantje"));
@@ -111,7 +112,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         customer1.setEmail("jantje@gmail.com");
         customer1.setPhoneNumber("0677332211");
         customer1.setAddressesOfCustomer(customer1Addresses);
-        customers.add(customer1);
+        customers.add(0, customer1);
 
         Customer customer2 = new Customer();
         customer2.setAccount(accountRepo.findByUsername("bertrandschmertrand"));
@@ -121,7 +122,7 @@ public class DatabaseBootstrap implements ApplicationListener<ContextRefreshedEv
         customer2.setEmail("bertrandowntalles@hotmail.com");
         customer2.setPhoneNumber("02044556611");
         customer1.setAddressesOfCustomer(customer2Addresses);
-        customers.add(customer2);
+        customers.add(1, customer2);
 
         return customers;
     }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add New Wine</title>
+    <title>Add/Edit Wine</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
     <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
@@ -22,11 +22,11 @@
                     <div class="form-row">
                         <div class="col-6">
                             <label>Name</label>
-                            <input type="text" class="form-control" th:field="*{name}" placeholder="">
+                            <input type="text" class="form-control" th:field="*{name}" placeholder=" ">
                         </div>
                         <div class="col">
                             <label>Year</label>
-                            <input type="text" class="form-control" th:field="*{year}" placeholder="">
+                            <input type="text" class="form-control" th:field="*{year}" placeholder=" ">
                         </div>
                         <div class="col">
                             <label>Price</label>
@@ -67,11 +67,11 @@
                     <div class="form-row">
                         <div class="col-6">
                             <label>Country</label>
-                            <input type="text" class="form-control" th:field="*{countryOfOrigin}" placeholder="">
+                            <input type="text" class="form-control" th:field="*{countryOfOrigin}" placeholder=" ">
                         </div>
                         <div class="col-6">
                             <label>Region</label>
-                            <input type="text" class="form-control" th:field="*{region}" placeholder="">
+                            <input type="text" class="form-control" th:field="*{region}" placeholder=" ">
                         </div>
                     </div>
                     <div class="form-row">
