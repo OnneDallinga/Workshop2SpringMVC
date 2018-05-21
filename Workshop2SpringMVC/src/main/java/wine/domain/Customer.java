@@ -8,8 +8,6 @@ import wine.utility.BaseEntity;
 import wine.domain.Account;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
