@@ -34,9 +34,11 @@
                 </div>
                 <span class="border-top my-3"></span>
                 <div class="row product-row">
-                    <div class="col-12 attribute">Description
+                    <div class="col-8 attribute">Description
                         <p class="product-description" th:text="${wine.description}">Blablabla</p>
                     </div>
+                    <div class="col-4 attribute">Added On: <span class="create-update" th:text="${#dates.format(wine.createdOn, 'dd-MM-yyyy - HH:mm:ss')}"></span>
+                        Last Modified: <span class="create-update" th:text="${#dates.format(wine.lastModifiedOn, 'dd-MM-yyyy - HH:mm:ss')}"></span></div>
                 </div>
                 <div class="row">
                     <div class="col-12 offset-8 object-operations">

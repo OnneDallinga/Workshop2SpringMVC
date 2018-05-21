@@ -42,6 +42,10 @@ div.attribute > span {
     font-weight: normal;
 }
 
+span.create-update {
+    float: right;
+}
+
 .object-operations {
     margin-top: 20px;
 }
