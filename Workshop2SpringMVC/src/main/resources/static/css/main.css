@@ -94,6 +94,10 @@ p.product-description {
     font-weight: normal;
 }
 
+/* CUSTOMER SPECIFIC STYLING */
+
+
+
 /* NAVBAR STYLING */
 
 form#logout-button {
@@ -114,4 +118,14 @@ form#logout-button {
 
 .footer-text {
     color: black;
+}
+
+/* LOGIN STYLING */
+
+div#login-container {
+    padding: 70px 120px 70px 120px;
+}
+
+div#login-card {
+    margin: 30px 50px 30px 50px;
 }

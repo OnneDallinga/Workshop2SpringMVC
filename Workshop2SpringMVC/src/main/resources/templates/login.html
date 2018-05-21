@@ -1,34 +1,46 @@
 <!DOCTYPE html>
-<html 
-      xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html
+        xmlns:th="http://www.thymeleaf.org">
+<head>
     <title>The best wine in the world</title>
 
-      <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
-  </head>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
 
-  <body>
-    <h1>Login</h1>
+<body>
+<div class="bg-img">
+    <div class="content-container">
+        <div class="container-fluid" id="login-container">
+            <div class="card">
+                <div class="container-fluid" id="login-card">
+                    <h1>Login</h1>
 
-    <p>New here? Click
-       <a th:href="@{/register}">here</a> to register.</p>
+                    <p>New here? Click
+                        <a th:href="@{/register}">here</a> to register.</p>
 
-<form class="form-signin" th:action="@{/login}" method="post">
- <h2 class="form-signin-heading">Please sign in</h2>
- <p>Example: user / password</p>
- <p th:if="${param.error}" class="error">Invalid user or password</p>
- <p>
-   <label for="username" class="sr-only">Username</label>
-   <input type="text" id="username" name="username" class="form-control"
-     placeholder="Username" required autofocus/>
- </p>
- <p>
-   <label for="password" class="sr-only">Password</label>
-   <input type="password" id="password" name="password" class="form-control"
-     placeholder="Password" required autofocus/>
- </p>
- <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br/>
- <p><a href="/index" th:href="@{/index}">Back to home page</a></p>
-</form>
-  </body>
+                    <form class="form-signin" th:action="@{/login}" method="post">
+                        <h2 class="form-signin-heading">Please sign in</h2>
+                        <p>Example: user / password</p>
+                        <p th:if="${param.error}" class="error">Invalid user or password</p>
+                        <p>
+                            <label for="username" class="sr-only">Username</label>
+                            <input type="text" id="username" name="username" class="form-control"
+                                   placeholder="Username" required autofocus/>
+                        </p>
+                        <p>
+                            <label for="password" class="sr-only">Password</label>
+                            <input type="password" id="password" name="password" class="form-control"
+                                   placeholder="Password" required autofocus/>
+                        </p>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        <br/>
+                        <p><a href="/index" th:href="@{/index}">Back to home page</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

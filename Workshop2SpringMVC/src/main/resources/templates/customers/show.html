@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Viewing Customer</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="bg-img">
+    <div class="content-container">
+        <div class="container-fluid">
+            <div class="card product-card">
+                <h1 class="product-title" th:text="${customer.getFullName()}">Name</h1>
+                <div class="row product-row">
+                    <div class="col-4 attribute">ID: <span th:text="${customer.id}"></span></div>
+                    <div class="col-4 attribute">Email: <span th:text="${customer.email}"></span></div>
+                    <div class="col-4 attribute">Phone number: <span th:text="${customer.phoneNumber}"></span></div>
+                </div>
+                <span class="border-top my-3"></span>
+                <div class="row product-row">
+                    <div class="col-4 attribute">First Name: <span th:text="${customer.firstName}"></span></div>
+                    <div class="col-4 attribute">Prefix: <span th:text="${customer.lastNamePreposition}?: '(no prefix specified)'">n/a</span></div>
+                    <div class="col-4 attribute">Last Name: <span th:text="${customer.lastName}"></span></div>
+                </div>
+                <span class="border-top my-3"></span>
+                <div class="row product-row">
+                    <h4 id="address-header">Known Addresses</h4>
+                    </div>
+                </div>
+                <span class="border-top my-3"></span>
+                <div class="row product-row">
+                    <div class="col-4 offset-8 attribute">Added On: <span class="create-update"
+                                                                 th:text="${#dates.format(customer.createdOn, 'dd-MM-yyyy - HH:mm:ss')}"></span>
+                        <br>
+                        Last Modified: <span class="create-update"
+                                             th:text="${#dates.format(customer.lastModifiedOn, 'dd-MM-yyyy - HH:mm:ss')}"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 offset-8 object-operations">
+                        <button type="button" class="btn btn-secondary btn-lg"><a href="#"
+                                                                                  th:href="@{'/customers/' + ${customer.id} + '/edit'}">Edit</a>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-lg"><a href="#"
+                                                                               th:href="@{'/customers/' + ${customer.id} + '/delete'}">Delete</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

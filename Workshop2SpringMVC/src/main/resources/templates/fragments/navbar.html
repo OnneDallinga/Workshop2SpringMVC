@@ -9,7 +9,8 @@
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" th:href="@{/products/wines/all}">Wines</a>
         <a class="p-2 text-dark" th:href="@{/customers/all}">Customers</a>
-        <a class="p-2 text-dark" href="contact.html">Contact</a>
+        <a class="p-2 text-dark" th:href="@{/orders/all}">Orders</a>
+        <a class="p-2 text-dark" th:href="contact.html">Contact</a>
     </nav>
     <form id="logout-button" method="POST" th:action="@{/logout}">
         <button type="submit" class="btn btn-outline-secondary">Logout
