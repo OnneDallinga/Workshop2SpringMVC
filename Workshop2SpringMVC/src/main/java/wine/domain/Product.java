@@ -17,7 +17,7 @@ public abstract class Product extends BaseEntity<Long> {
 
     @NotNull
     String name;
-
+    
     @Lob
     String description;
 

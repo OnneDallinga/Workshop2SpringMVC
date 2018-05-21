@@ -41,8 +41,7 @@ public class Customer extends BaseEntity<Long> {
 
     @OneToMany(mappedBy = "customer",
                   fetch = FetchType.LAZY)
-     @Fetch(value = FetchMode.SUBSELECT)
-     @Column(nullable = false)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Order> ordersOfCustomer;
     
     public Customer(String firstName, String lastName, String lastNamePreposition, String email, String phoneNumber) {
